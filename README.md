@@ -1,1 +1,2 @@
 # PROYECTO-1-POO201902
+class Avion{}
