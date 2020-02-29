@@ -12,15 +12,13 @@ public class Funcion {
     public String verPelicula(){
         return pelicula.getNombre();
     }
-    public int verSala(){
+    public int getSala(){
         return sala.getID();
     }
-    public void verFuncion(){
-        System.out.println("sala: "+this.verSala());
-        System.out.println("Fecha: "+fecha);
+    public Date getfecha(){
+        return fecha;
     }
-    public void verAsientos(){
-        System.out.println("asientos disponibles:");
+    public void getAsientos(){
        // falta definirla
         
     }

@@ -11,7 +11,7 @@ public class Pelicula {
     String genero;
     String director;
     int añoLanzamiento;
-    static ArrayList<Pelicula> Cartelera;
+    public static ArrayList<Pelicula> Cartelera;
     ArrayList<Funcion> funciones;
     public Pelicula(String nombre,String genero,String director,int año){
         this.nombre=nombre;
@@ -34,48 +34,28 @@ public class Pelicula {
     public void fuera(){
         Cartelera.remove(this);
     }
-    public static void verCartelera(){
-        System.out.println("peliculas en cartelera");
-        for(Pelicula i : Cartelera){
-            System.err.println(i.getNombre()); 
-        }
-    }
-    public static Pelicula ElegirPelicula(){
-        String pelicula = sc.next("elija la pelicula que desea reservar");
-        for(Pelicula i : Cartelera){
-            if(i.getNombre() == pelicula){
-                return i;
-            }
-            else{
-                System.out.println("pelicula incorrecta");
-                Pelicula.ElegirPelicula();
-            }
-        }
+    
+    public static Pelicula ElegirPelicula(int i){
+        if (i>=0 && i< Cartelera.size()){
+            return Cartelera.get(i);
+        } 
         return null;
     }
-    public Funcion elegirFuncion(){
-        System.out.println("seleccione una funcion");
-        if (funciones.size()==0){
-            System.out.println("Lo sentimos.No Hay Funciones programadas para esta pelicula");
+    public int nroFunciones(){
+        return funciones.size();
+    }
+    public String getSalas(int i){
+        return "sala: " + funciones.get(i).getSala();
+    }
+    public String getFecha(int i){
+        return "fecha: " + funciones.get(i).getfecha();
+    }
+    public Funcion elegirFuncion(int i){
+        if (i>=0 && i< funciones.size()){
+            return funciones.get(i);
         }
         else{
-            for(int i=1;i<=funciones.size();i++){
-                System.out.print(i);
-                funciones.get(i-1).verFuncion();
-                try {
-                    int f = sc.nextInt();
-                    if (f>=1 && f<= funciones.size()){
-                        return funciones.get(i);
-                    }
-                    else{
-                        System.out.println("valor incorrecto");
-                        elegirFuncion();
-                    }
-                } catch (Exception e) {
-                    elegirFuncion();
-                }
-            }
+            return null;
         }
-        return null;
     }
 }
