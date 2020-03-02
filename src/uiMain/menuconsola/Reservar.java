@@ -24,7 +24,7 @@ public class Reservar extends OpcionDeMenu {
         System.out.println("elija una funcion");
         if (pel.nroFunciones()==0){
             System.out.println("no hay funciones programadas");
-            
+            return;
             
             // falta salir de el metodo
         }
@@ -41,6 +41,50 @@ public class Reservar extends OpcionDeMenu {
             sel = sc.nextInt();
             funcion = pel.elegirFuncion(sel);
         }
+        
+        Tiquete tiquete = new Tiquete(); //se crea un tiquete
+		tiquete.setEvento(funcion); //se le asigna la funcion escogida
+		
+		System.out.println("Lista de asientos disponibles: ");
+		boolean verAsientos = funcion.verAsientosDisponibles();
+		if (verAsientos == false) {
+			System.out.println("No hay asientos disponibles");
+			return;
+		}
+		
+		System.out.println("Escriba el codigo del asiento deseado");
+		System.out.println("El codigo debe tener la siguiente estructura: una letra al inicio (A-H) y un numero al final (0 al 9)");
+		System.out.println("Ejemplos: A0, B6, H9");
+		System.out.println("Asientos que empiezan por A y B son privados, tienen un costo de 10.000");
+		System.out.println("Los demas asientos son comunes, tienen un valor de 5.000");
+		
+		String codigoAsiento = sc.next();
+		Asiento asiento = funcion.buscarAsiento(codigoAsiento);
+		
+		if (asiento == null) {
+			System.out.println("Codigo de asiento invalido");
+			return;
+		}
+		else {
+			boolean escoger = tiquete.escogerAsiento(asiento);
+			if (escoger == true) {
+				System.out.println("Asiento elegido correctamente");
+				int costo = 0;
+				if (codigoAsiento.startsWith("A") || codigoAsiento.startsWith("B")) {
+					costo = 10000;
+				}
+				else {
+					costo = 5000;
+				}
+				Pago pago = new Pago(costo, false, tiquete);
+				tiquete.setRefPago(pago);
+				System.out.println("Tiquete generado exitosamente");
+			}
+			else {
+				System.out.println("El asiento no esta disponible");
+				return;
+			}
+		}
         
     }
 }
