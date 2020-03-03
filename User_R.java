@@ -1,6 +1,9 @@
 package gestorAplicacion.users;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import BaseDatos.SaveObject;
 import gestorAplicacion.Funcion;
 import gestorAplicacion.DatosTeatro;
 
@@ -9,14 +12,14 @@ public abstract class User_R implements User{
 	private String apellido;
 	private String login;
 	private String pass;
-	private Long document = new Long(0);
+	private String document;
 	private Integer edad = 0;
 	private String sexo = ""; //M o F
 	
 	User_R(){
 	}
 	//Administrador
-	User_R(String nombre, String apellido, String login, String pass, Long document,Integer edad,String sexo){
+	User_R(String nombre, String apellido, String login, String pass, String document,Integer edad,String sexo){
 		this.nombre=nombre;
 		this.apellido=apellido;
 		this.login=login;
@@ -27,7 +30,7 @@ public abstract class User_R implements User{
 	}
 	
 	//Cliente
-	User_R(String nombre, String apellido, String login, String pass, Long document, Integer edad){
+	User_R(String nombre, String apellido, String login, String pass, String document, Integer edad){
 		this.nombre=nombre;
 		this.apellido=apellido;
 		this.login=login;
@@ -40,6 +43,7 @@ public abstract class User_R implements User{
 	public User_R crearUser(int Op) {
 		Scanner in = new Scanner(System.in);
 		ArrayList<Object> D = new ArrayList();
+		
 		String aux;Long aux1; Integer aux2;
 			//Ingresar el nombre
 		do {
@@ -114,38 +118,35 @@ public abstract class User_R implements User{
 			}while(aux==null);
 			D.add(aux);
 			
+			
 			//Ingresar Documento:
+			aux=null;
 			do {
 				System.out.print("Ingrese su Documento: ");
-				try {
-					aux1=in.nextLong();
-				}catch(Exception e) { //Buscar el tipo de error específico
-					System.out.println("!!ERROR: Solo se pueden ingresar numeros¡¡ "+e);
-					aux1=null;
+				aux=in.next();
+				
+				if(aux.equals("")||aux.contains(" ")||!isNumeric(aux)) {
+					System.out.println("!!ERROR: Documento Invalido¡¡");
+					aux=null;
 				}
-			}while(aux1==null);
-			D.add(aux1);
+			}while(aux==null);
+			D.add(aux);
 			
 			//Ingresar edad:
 			do {
-				try {
 					
-					System.out.print("Ingrese su Edad: ");aux2=in.nextInt();
+				System.out.print("Ingrese su Edad: ");aux2=in.nextInt();
 					
-					if(aux2<18) {
-						System.out.println("!!ERROR: No eres mayor de edad¡¡");
-						aux2=null;
-					}
-					
-					if(aux2>199) {
-						System.out.println("!!ERROR: Edad Invalida¡¡");
-						aux2=null;
-					}
-					
-				}catch(Exception e) { //Buscar el tipo de error específico
-					System.out.println("!!ERROR: Solo se pueden ingresar numeros¡¡");
+				if(aux2<18) {
+					System.out.println("!!ERROR: No eres mayor de edad¡¡");
 					aux2=null;
 				}
+					
+				if(aux2>199) {
+					System.out.println("!!ERROR: Edad Invalida¡¡");
+					aux2=null;
+				}
+					
 			}while(aux2==null);
 			D.add(aux2);
 			
@@ -162,18 +163,18 @@ public abstract class User_R implements User{
 			
 			//Crear el Admin_System:
 			if(Op==1) {
+				SaveObject.Write(SaveObject.U_Adm, D);
 				return new Admin_System((String) D.get(0),(String)D.get(1),
-						(String)D.get(2),(String)D.get(3),(Long)D.get(4),
+						(String)D.get(2),(String)D.get(3),(String)D.get(4),
 						(Integer)D.get(5),(String)D.get(6));
 
 			}else {
+				SaveObject.Write(SaveObject.U_Cli, D);
 				return new Cliente((String) D.get(0),(String)D.get(1),
-						(String)D.get(2),(String)D.get(3),(Long)D.get(4),
+						(String)D.get(2),(String)D.get(3),(String)D.get(4),
 						(Integer)D.get(5));
 			}
 						
-			
-		//USUARIO CLIENTE	
 			
 		}
 		
@@ -186,6 +187,15 @@ public abstract class User_R implements User{
 			}
 		}
 		return false;
+	}
+	
+	private boolean isNumeric(String aux) {
+		try {
+			Integer x = Integer.parseInt(aux);
+		}catch (NumberFormatException e) {
+			return false;
+		}	
+		return true;
 	}
 	
 	
@@ -218,10 +228,10 @@ public abstract class User_R implements User{
 		this.login=login;
 	}
 	
-	public Long getDocument() {
+	public String getDocument() {
 		return this.document;
 	}
-	public void setDocument(Long document) {
+	public void setDocument(String document) {
 		this.document=document;
 	}
 	
