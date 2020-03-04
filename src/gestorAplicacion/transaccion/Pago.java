@@ -6,13 +6,13 @@ import java.util.GregorianCalendar;
 
 public class Pago {
 	
-	static int generarCodigo;
-	int codigo;
-	int costoTiquete;
-	double costoTotal;
-	final double iva = 0.19;
-	boolean pagado;
-	Tiquete tiquete;
+	private static int generarCodigo;
+	private int codigo;
+	private int costoTiquete;
+	private final double iva = 0.19;
+	private double costoTotal=costoTiquete*iva;
+	private boolean pagado;
+	private Tiquete tiquete;
 	
 	public Pago (int costo, boolean pagado, Tiquete tiquete){
 		this.codigo = generarCodigo++;
@@ -65,7 +65,8 @@ public class Pago {
 	//funciones
 	
 	public boolean transaccion(Tarjeta_des tarjeta) {
-		double valorActual = tarjeta.getValorRecargado();
+		double valorActual;
+		valorActual = tarjeta.getValorRecargado();
 		if (this.costoTotal > valorActual) {
 			//imprimir no tienes saldo suficiente
 			return false;
