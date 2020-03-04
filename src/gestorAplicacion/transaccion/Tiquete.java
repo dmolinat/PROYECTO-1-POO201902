@@ -10,12 +10,12 @@ import java.util.GregorianCalendar;
 
 public class Tiquete {
 	
-	static int generarCodigo;
-	int codigo;
-	Asiento asiento;
-	Funcion evento;
-	Pago refPago;//codigo del pago
-	Cliente cliente;
+	private static int generarCodigo;
+	private int codigo;
+	private Asiento asiento;
+	private Funcion evento;
+	public Pago refPago;//codigo del pago
+	private Cliente cliente;
 	
 	Tiquete (Asiento asiento, Funcion evento, Pago refPago){
 		this.codigo = generarCodigo++;
@@ -81,7 +81,7 @@ public class Tiquete {
 	}
 	
 	public boolean cambiarAsiento(Asiento asiento) {
-			Calendar fechaActual = new GregorianCalendar();
+			Date fechaActual = new Date();
 			if (this.evento.getFecha().before(fechaActual)) {
 				//imprimir el evento ya paso
 				return false;
