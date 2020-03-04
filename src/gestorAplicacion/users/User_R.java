@@ -50,7 +50,7 @@ public abstract class User_R implements User{
 				System.out.print("Ingrese el nombre: "); aux=in.next();
 				if(aux.equals("")||aux.contains(" ")) {
 					System.out.println("===========================");
-					System.out.println("!!ERROR: Nombre invalido¡¡");
+					System.out.println("!!ERROR: Nombre invalidoã€€");
 					System.out.println("===========================");
 					aux=null;
 		}else if(aux.contains("0")||aux.contains("1")||aux.contains("2")||
@@ -58,7 +58,7 @@ public abstract class User_R implements User{
 						aux.contains("6")||aux.contains("7")||aux.contains("8")||
 						aux.contains("9")) {
 					System.out.println("=========================================================");
-					System.out.println("!!ERROR: Los nombres y apellidos no deben llevar numero¡¡");
+					System.out.println("!!ERROR: Los nombres y apellidos no deben llevar numeroã€€");
 					System.out.println("=========================================================");
 					aux=null;
 				}	
@@ -72,7 +72,7 @@ public abstract class User_R implements User{
 				
 				if(aux.equals("")||aux.contains(" ")) {
 					System.out.println("============================");
-					System.out.println("!!ERROR: Apellido invalido¡¡");
+					System.out.println("!!ERROR: Apellido invalidoã€€");
 					System.out.println("============================");
 					aux=null;
 				}else if(aux.contains("0")||aux.contains("1")||aux.contains("2")||
@@ -80,7 +80,7 @@ public abstract class User_R implements User{
 						aux.contains("6")||aux.contains("7")||aux.contains("8")||
 						aux.contains("9")) {
 					System.out.println("=========================================================");
-					System.out.println("!!ERROR: Los nombres y apellidos no deben llevar numeros¡¡");
+					System.out.println("!!ERROR: Los nombres y apellidos no deben llevar numerosã€€");
 					System.out.println("=========================================================");
 					aux=null;
 				}	
@@ -92,11 +92,11 @@ public abstract class User_R implements User{
 			do {
 				System.out.print("Ingrese un usuario: ");aux=in.next();
 				if(aux.equals("")||aux.contains(" ")||existId(aux)){
-					System.out.println("!!ERROR: Login invalido¡¡");
+					System.out.println("!!ERROR: Login invalidoã€€");
 					aux=null;
 				}
 				if(aux.length()<5) {
-					System.out.println("¡¡ERROR: No supera el número de caracteres¡¡");
+					System.out.println("ã€€ERROR: No supera el né·ero de caracteresã€€");
 					aux=null;
 				}
 			}while(aux==null);
@@ -105,13 +105,13 @@ public abstract class User_R implements User{
 			//Ingrese Pass
 			aux=null;
 			do {
-				System.out.print("Ingrese una contraseña: ");aux=in.next();
+				System.out.print("Ingrese una contraseé¦»: ");aux=in.next();
 				if(aux.equals("")||aux.contains(" ")){
-					System.out.println("!!ERROR: Login invalido¡¡");
+					System.out.println("!!ERROR: Login invalidoã€€");
 					aux=null;
 				}
 				if(aux.length()<6) {
-					System.out.println("¡¡ERROR: No supera el número de caracteres¡¡");
+					System.out.println("ã€€ERROR: No supera el né·ero de caracteresã€€");
 					aux=null;
 				}
 				
@@ -126,7 +126,7 @@ public abstract class User_R implements User{
 				aux=in.next();
 				
 				if(aux.equals("")||aux.contains(" ")||!isNumeric(aux)) {
-					System.out.println("!!ERROR: Documento Invalido¡¡");
+					System.out.println("!!ERROR: Documento Invalidoã€€");
 					aux=null;
 				}
 			}while(aux==null);
@@ -138,12 +138,12 @@ public abstract class User_R implements User{
 				System.out.print("Ingrese su Edad: ");aux2=in.nextInt();
 					
 				if(aux2<18) {
-					System.out.println("!!ERROR: No eres mayor de edad¡¡");
+					System.out.println("!!ERROR: No eres mayor de edadã€€");
 					aux2=null;
 				}
 					
 				if(aux2>199) {
-					System.out.println("!!ERROR: Edad Invalida¡¡");
+					System.out.println("!!ERROR: Edad Invalidaã€€");
 					aux2=null;
 				}
 					
@@ -155,7 +155,7 @@ public abstract class User_R implements User{
 			do {
 				System.out.print("Ingrese su sexo: ");aux=in.next();
 				if((!aux.equals("M")&&!aux.equals("F"))||aux.equals("")||aux.contains(" ")) {
-					System.out.println("!!ERROR: Sexo Invalido¡¡");
+					System.out.println("!!ERROR: Sexo Invalidoã€€");
 					aux=null;
 				}
 			}while(aux==null);
@@ -179,7 +179,7 @@ public abstract class User_R implements User{
 		}
 		
 	
-	//Método para comprobar que el usuario ya existe.
+	//Mé– odo para comprobar que el usuario ya existe.
 	private boolean existId(String aux) {
 		for(int i=0; i < (DatosTeatro.U).size();i++) {
 			if((((DatosTeatro.U).get(i)).getLogin()).equals(aux)) {
