@@ -99,7 +99,7 @@ public class SaveObject {
 	}
 	
 	
-	//SOBRECARGA DE MÉTODOS
+	//SOBRECARGA DE MÃ‰TODOS
 	public static void Read(File n) {
 		try{
 			FileReader x1= new FileReader(n);
