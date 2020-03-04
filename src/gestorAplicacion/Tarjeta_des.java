@@ -16,6 +16,12 @@ public class Tarjeta_des{
 	public Integer getCodigo() {
 		return this.codigo;
 	}
+	public Integer getValorRecargado() {
+		return this.valorRecargado;
+	}
+	public void setValorRecargado(Integer valorRecargado) {
+		this.valorRecargado=valorRecargado;
+	}
 	public void setCodigo(String codigo) {
 		 this.codigo=codigo;
 	}
