@@ -51,7 +51,7 @@ public class EscogerEvento extends OpcionDeMenu {
         } 
         Funcion funcion = null; 
         while(funcion == null){
-            System.out.println("¿Qué funcion desea reservar?:");
+            System.out.println("Â¿QuÃ© funcion desea reservar?:");
             sel = sc.nextInt();
             funcion = pel.elegirFuncion(sel);
         }
