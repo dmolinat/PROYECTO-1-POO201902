@@ -1,11 +1,11 @@
 package gestorAplicacion;
 
 public class Asiento {
-	
-	String codigo;
-	int precio;
-	boolean disponible = true;
-	
+
+	private String codigo;
+	private int precio;
+	private boolean disponible = true;
+
 	Asiento (String codigo, int precio, boolean disponible){
 		this.codigo = codigo;
 		this.precio = precio;
@@ -13,7 +13,7 @@ public class Asiento {
 	}
 
 	//setter y getters
-	
+
 	public String getCodigo() {
 		return codigo;
 	}
@@ -34,8 +34,11 @@ public class Asiento {
 		return disponible;
 	}
 
+
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
+		
 	}
-	
+
+
 }
