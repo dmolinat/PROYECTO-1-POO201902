@@ -1,13 +1,17 @@
-package gestorAplicacion.Transaccion;
+package gestorAplicacion.transaccion;
 import java.util.date;
+import gestorAplicacion.users.Cliente;
 
-public class Tarjeta_des{	
-	Integer codigo;
+public class Tarjeta_des{
+	
+	int codigo;
+	double valorRecargado = 0;
 	java.util.date fechaDeVencimiento = new Date();
 	java.util.date fechaDeExpedicion = new Date();
-	String nombreContribuyente;
+	Cliente nombreContribuyente;
 	public Tarjeta_des() {}
-	public Tarjeta_des(Integer codigo, Date fechaDeVencimiento, Date fechaDeExpedicion,String nombreContribuyente) {
+	public Tarjeta_des(double valorRecargado, int codigo, Date fechaDeVencimiento, Date fechaDeExpedicion, Cliente nombreContribuyente) {
+		this.valorRecargado = valorRecargado;
 		this.codigo = codigo;
 		this.fechaDeVencimiento = fechaDeVencimiento;
 		this.fechaDeExpedicion = fechaDeExpedicion;
@@ -19,10 +23,10 @@ public class Tarjeta_des{
 	public void setCodigo(String codigo) {
 		 this.codigo=codigo;
 	}
-	public Integer getValorRecargado() {
+	public double getValorRecargado() {
 		return this.valorRecargado;
 	}
-	public void setValorRecargado(Integer valorRecargado) {
+	public void setValorRecargado(double valorRecargado) {
 		this.valorRecargado=valorRecargado;
 	}
 	public Date getFechaVen() {
