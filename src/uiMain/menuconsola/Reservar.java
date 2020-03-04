@@ -4,6 +4,10 @@ import gestorAplicacion.Funcion;
 import gestorAplicacion.Pelicula;
 import java.util.Scanner;
 import uiMain.OpcionDeMenu;
+import gestorAplicacion.Asiento;
+import gestorAplicacion.transaccion.Pago;
+import gestorAplicacion.transaccion.Tiquete;
+import gestorAplicacion.users.Cliente;
 
 
 public class Reservar extends OpcionDeMenu {
@@ -13,6 +17,9 @@ public class Reservar extends OpcionDeMenu {
         System.out.print("Reservar ");
     }
     public void ejecutar(){
+	
+	Cliente usuario; //esta variable hay que apuntarla al usuario que este loggeado
+	
         verCartelera.verCartelera();
         int sel;
         Pelicula pel = null;
@@ -69,15 +76,12 @@ public class Reservar extends OpcionDeMenu {
 			boolean escoger = tiquete.escogerAsiento(asiento);
 			if (escoger == true) {
 				System.out.println("Asiento elegido correctamente");
-				int costo = 0;
-				if (codigoAsiento.startsWith("A") || codigoAsiento.startsWith("B")) {
-					costo = 10000;
-				}
-				else {
-					costo = 5000;
-				}
+				int costo = asiento.getPrecio();
 				Pago pago = new Pago(costo, false, tiquete);
 				tiquete.setRefPago(pago);
+				tiquete.setEvento(funcion);
+				tiquete.setCliente(usuario);
+				usuario.getTiquetes().add(tiquete);
 				System.out.println("Tiquete generado exitosamente");
 			}
 			else {
