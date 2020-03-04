@@ -1,4 +1,3 @@
-
 package gestorAplicacion;
 
 import java.util.ArrayList;
@@ -6,13 +5,14 @@ import java.util.Scanner;
 
 
 public class Pelicula {
-    static Scanner sc = new Scanner(System.in);
-    String nombre;
-    String genero;
-    String director;
-    int añoLanzamiento;
+	private static Scanner sc = new Scanner(System.in);
+	private String nombre;
+	private String genero;
+	private String director;
+	private int añoLanzamiento;
     public static ArrayList<Pelicula> Cartelera;
-    ArrayList<Funcion> funciones;
+    private ArrayList<Funcion> funciones;
+    
     public Pelicula(String nombre,String genero,String director,int año){
         this.nombre=nombre;
         this.genero=genero;
@@ -36,6 +36,7 @@ public class Pelicula {
     }
     
     public static Pelicula ElegirPelicula(int i){
+        //verifica si existe esta pelicula en cartelera
         if (i>=0 && i< Cartelera.size()){
             return Cartelera.get(i);
         } 
@@ -48,9 +49,18 @@ public class Pelicula {
         return "sala: " + funciones.get(i).getSala();
     }
     public String getFecha(int i){
-        return "fecha: " + funciones.get(i).getfecha();
+        return "fecha: " + funciones.get(i).getFecha1();
     }
+    
+    public ArrayList<Funcion> getFuncions(){
+    	return funciones;
+    }
+    public void setFuncions(ArrayList<Funcion>funciones){
+    	this.funciones=funciones;
+    }
+    
     public Funcion elegirFuncion(int i){
+        //verifica si existe ese numero de funcion
         if (i>=0 && i< funciones.size()){
             return funciones.get(i);
         }
