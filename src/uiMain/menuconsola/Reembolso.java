@@ -20,7 +20,7 @@ public class Reembolso extends OpcionDeMenu {
 		
 		System.out.println("Lista de sus tiquetes: ");
 		usuario.mostrarTiquetes();
-		System.out.println("Digite el numero de la lista, correspondiente al tiquete al cual desea solicitar un reembolso");
+		System.out.println("Digite el numero de la lista, correspondiente al tiquete al cual desea solicitar un reembolso y cancelar su asistencia");
 		int numero = sc.nextInt();
 		
 		Tiquete tiquete = usuario.seleccionarTiquete(numero);
@@ -32,9 +32,11 @@ public class Reembolso extends OpcionDeMenu {
 		boolean operacion = pago.reembolso(tarjeta);
 		if (operacion == true) {
 			System.out.println("Reembolso exitoso!");
+			System.out.println("Asistencia cancelada correctamente");
 		}
 		else {
 			System.out.println("Lo sentimos, faltan 24 horas o menos para el evento. No aplicas para reembolso");
+			System.out.println("Asistencia cancelada correctamente");
 		}
 	}
 }
