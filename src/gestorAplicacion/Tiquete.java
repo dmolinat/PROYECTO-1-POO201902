@@ -2,6 +2,8 @@ package gestorAplicacion.transaccion;
 
 import gestorAplicacion.Asiento;
 import gestorAplicacion.Funcion;
+import gestorAplicacion.users.Cliente;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -12,7 +14,8 @@ public class Tiquete {
 	int codigo;
 	Asiento asiento;
 	Funcion evento;
-	Pago refPago; //codigo del pago
+	Pago refPago;//codigo del pago
+	Cliente cliente;
 	
 	Tiquete (Asiento asiento, Funcion evento, Pago refPago){
 		this.codigo = generarCodigo++;
@@ -57,6 +60,14 @@ public class Tiquete {
 		this.refPago = refPago;
 	}
 	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	public boolean escogerAsiento(Asiento asiento) {
 		if (asiento.isDisponible()) {
 			this.setAsiento(asiento);
