@@ -68,7 +68,7 @@ public class Start {
 		
 		
 		
-		//Agregando Películas
+		//Agregando PelÃ­culas
 		Pelicula.Cartelera=new ArrayList();
 		Pelicula.Cartelera.add(new Pelicula("Sonic La pelicula","Ciencia ficcion","Jeff Fowler",2020));
 		Pelicula.Cartelera.add(new Pelicula("Interestelar", "Ciencia ficcion", "Christopher Nolan",2014));
@@ -114,13 +114,13 @@ public class Start {
 				((DatosTeatro.Ini.getOp().get(op))).ejecutar();	
 			}
 			if(op!=0 && op!=1 && op!=2 && op!=3) {
-				System.out.println("ERROR: Esta opción no está disponible");
+				System.out.println("ERROR: Esta opciÃ³n no estÃ¡ disponible");
 			}
 		}while(op!=3);
 		
 	}
 	
 	public static void Off() {
-		System.out.println("!!AVISO: se ha salido de la aplicación¡¡");
+		System.out.println("!!AVISO: se ha salido de la aplicaciÃ³nÂ¡Â¡");
 	}
 }
