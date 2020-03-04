@@ -65,7 +65,7 @@ public class Pago {
 	//funciones
 	
 	public boolean transaccion(Tarjeta_des tarjeta) {
-		int valorActual = tarjeta.getValorRecargado();
+		double valorActual = tarjeta.getValorRecargado();
 		if (this.costoTotal > valorActual) {
 			//imprimir no tienes saldo suficiente
 			return false;
@@ -84,17 +84,32 @@ public class Pago {
 		fechaActualMas24.add(Calendar.DAY_OF_MONTH, 1);
 		
 		if (fechaEvento.before(fechaActualMas24)) {
+			
+			//se eliminan las referencias a los objetos para cancelar asistencia
+			this.tiquete.refPago = null;
+			this.tiquete.getAsiento().setDisponible(true); //se libera asiento
+			this.tiquete.getCliente().getTiquetes().remove(tiquete);
+			this.tiquete = null;
+			
 			//imprimir faltan 24 horas o menos para el evento. No aplicas para reembolso
 			return false;
 		}
 		else {
-			int valorActual = tarjeta.getValorRecargado();
+			double valorActual = tarjeta.getValorRecargado();
 			tarjeta.setValorRecargado(valorActual + this.costoTotal);
+			
+			//se eliminan las referencias a los objetos para cancelar asistencia
 			this.tiquete.refPago = null;
+			this.tiquete.getAsiento().setDisponible(true); //se libera asiento
+			this.tiquete.getCliente().getTiquetes().remove(tiquete);
 			this.tiquete = null;
+			
+			
+			
 			//imprimir Reembolso exitoso
 			return true;
 		}
 	}
 	
 }
+
