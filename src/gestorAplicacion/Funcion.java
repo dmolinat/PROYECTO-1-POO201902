@@ -90,4 +90,10 @@ public class Funcion {
     		this.getAsientos().add(asientoNuevo);
     	}
     }
+<<<<<<< HEAD
 }
+=======
+
+}
+
+>>>>>>> be2499d405b95222c6d736b7d738e7a7d9b0afdc

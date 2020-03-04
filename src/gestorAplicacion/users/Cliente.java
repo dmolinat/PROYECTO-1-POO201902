@@ -1,45 +1,51 @@
 package gestorAplicacion.users;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import gestorAplicacion.DatosTeatro;
 import gestorAplicacion.Funcion;
+import gestorAplicacion.transaccion.Tarjeta_des;
+import gestorAplicacion.transaccion.Tiquete;
 import uiMain.menuconsola.MenuDeConsola;
 import uiMain.menuconsola.OpcionDeMenu;
 
 public class Cliente extends User_R {
 	
+	private ArrayList<Tiquete> Tiquetes = new ArrayList();
 	//Añadir todas las opciones de menu que existan, pero el Cliente solo podrá
 	//acceder a las que estén con available=true
-	
+	private Tarjeta_des tarjeta;
 	private MenuDeConsola MenCli = new MenuDeConsola();
+	
 	
 	public Cliente() {	
 	}
 	
 	public Cliente(String nombre,String apellido,String login,String pass, String document, Integer edad) {
 		super(nombre,apellido,login,pass,document,edad);
+		tarjeta = new Tarjeta_des();
+		MenCli.setOp(DatosTeatro.opCli);
 	}
 	public String descripTeatro() {
-		// TODO Auto-generated method stub
-		return null;
+		String a = DatosTeatro.Descripcion;
+		return a;
 	}
 	
 	public void Opci() {
 		Scanner in = new Scanner(System.in);
-		int op=0;
-		do {
-			MenuDeConsola.lanzarMenu(((Admin_System)DatosTeatro.userLive).getMenAdmin().getOp());
-			System.out.println("Presiona "+ ((Admin_System)DatosTeatro.userLive).getMenAdmin().getOp().size() + ": Para salir");
-			op=in.nextInt();
-			
-			if(op!=((Admin_System)DatosTeatro.userLive).getMenAdmin().getOp().size()) {
-				((Admin_System)DatosTeatro.userLive).getMenAdmin().getOp().get(op).ejecutar();
-			}
-		}while(op!=((Admin_System)DatosTeatro.userLive).getMenAdmin().getOp().size());	
+			int op=0;
+			do {
+				MenuDeConsola.lanzarMenu(((Cliente)DatosTeatro.userLive).getMenCli().getOp());
+				System.out.println("Presiona "+ ((Cliente)DatosTeatro.userLive).getMenCli().getOp().size() + ": Para salir");
+				op=in.nextInt();
+				
+				if(op!=((Cliente)DatosTeatro.userLive).getMenCli().getOp().size()) {
+					((Cliente)DatosTeatro.userLive).getMenCli().getOp().get(op).ejecutar();
+				}
+			}while(op!=((Cliente)DatosTeatro.userLive).getMenCli().getOp().size());	
 	}
-	public 
 	
 	
 	
@@ -48,16 +54,11 @@ public class Cliente extends User_R {
 	}
 	
 
-	public ArrayList<Funcion> verF() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
-	//metodos necesarios
 	
 	public void mostrarTiquetes() {
 		int contador = 0;
-		Iterator<Tiquete> iterador = tiquetes.iterator();
+		Iterator<Tiquete> iterador = Tiquetes.iterator();
 		while (iterador.hasNext()) {
 			Tiquete tiquete = iterador.next();
 			System.out.println(contador++ + ". " + " Codigo: " + tiquete.getCodigo());
@@ -68,11 +69,23 @@ public class Cliente extends User_R {
 	}
 	
 	public Tiquete seleccionarTiquete(int indice) {
-		return tiquetes.get(indice);
+		return Tiquetes.get(indice);
 	}
 
 	public ArrayList<Tiquete> getTiquetes() {
-		return tiquetes;
+		return Tiquetes;
+	}
+	
+	public void setTiquetes(ArrayList<Tiquete> tiquetes) {
+		this.Tiquetes=tiquetes;
+	}
+	
+	public Tarjeta_des getAfiliacion() {
+		return tarjeta;
+	}
+	
+	public void RecargarTarjeta(double val) {
+		tarjeta.setValorRecargado(tarjeta.getValorRecargado()+val);
 	}
 
 }
