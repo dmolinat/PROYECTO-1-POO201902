@@ -52,5 +52,27 @@ public class Cliente extends User_R {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	//metodos necesarios
+	
+	public void mostrarTiquetes() {
+		int contador = 0;
+		Iterator<Tiquete> iterador = tiquetes.iterator();
+		while (iterador.hasNext()) {
+			Tiquete tiquete = iterador.next();
+			System.out.println(contador++ + ". " + " Codigo: " + tiquete.getCodigo());
+			System.out.println("Fecha: " + tiquete.getEvento().getFecha().getTime());
+			System.out.println("Pelicula: " + tiquete.getEvento().verPelicula());
+			System.out.println("Asiento: " + tiquete.getAsiento().getCodigo());
+		}
+	}
+	
+	public Tiquete seleccionarTiquete(int indice) {
+		return tiquetes.get(indice);
+	}
+
+	public ArrayList<Tiquete> getTiquetes() {
+		return tiquetes;
+	}
 
 }
