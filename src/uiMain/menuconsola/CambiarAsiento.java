@@ -3,22 +3,23 @@ package uiMain.menuconsola;
 import java.util.Scanner;
 
 import gestorAplicacion.Asiento;
+import gestorAplicacion.DatosTeatro;
 import gestorAplicacion.Funcion;
 import gestorAplicacion.transaccion.Tiquete;
 import gestorAplicacion.users.Cliente;
-import uiMain.OpcionDeMenu;
+import uiMain.menuconsola.OpcionDeMenu;
 
 public class CambiarAsiento extends OpcionDeMenu {
 	
-	public void mostrar() {
-		
+	public String mostrar() {
+		return "Cambiar Asiento: ";
 	}
 	
 	public void ejecutar() {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		Cliente usuario; //esta variable hay que apuntarla al usuario que este loggeado
+		Cliente usuario = (Cliente) DatosTeatro.userLive; //esta variable hay que apuntarla al usuario que este loggeado
 		
 		System.out.println("Lista de sus tiquetes: ");
 		usuario.mostrarTiquetes();
