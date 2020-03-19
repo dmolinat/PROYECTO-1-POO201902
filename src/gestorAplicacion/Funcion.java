@@ -1,4 +1,3 @@
-
 package gestorAplicacion;
 
 import gestorAplicacion.Asiento;
@@ -49,7 +48,6 @@ public class Funcion {
      }
     
     public Asiento buscarAsiento(String codigo) {
-            //busca un asiento por el codigo y devuelve el objeto
 		Iterator<Asiento> iterador = asientos.iterator();
 		while(iterador.hasNext()) {
 			Asiento asiento = (Asiento) iterador.next();
@@ -61,13 +59,15 @@ public class Funcion {
 	}
 
     public boolean verAsientosDisponibles() {
-        //retorna si hay o no asientos disponibles
     	int contador = 0;
     	Iterator<Asiento> iterador = asientos.iterator();
 		while(iterador.hasNext()) {
 			Asiento asiento = (Asiento) iterador.next();
 			if (asiento.isDisponible() == true) {
-				System.out.println(asiento.getCodigo());
+				System.out.print(asiento.getCodigo()+" - ");
+				if(contador%10 == 0) {
+					System.out.println();
+				}
 				contador++;
 			}
 		}
