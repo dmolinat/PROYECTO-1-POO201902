@@ -20,19 +20,23 @@ import uiMain.menuconsola.RecargarTarjetad;
 import uiMain.menuconsola.Reembolso;
 import uiMain.menuconsola.ShowOpc;
 import gestorAplicacion.DatosTeatro;
+import gestorAplicacion.Pelicula;
+import gestorAplicacion.Sala;
 import gestorAplicacion.users.Cliente;
 
 public class SaveObject {
+	//Usuarios
 	public static File U_Cli = new File(System.getProperty("user.dir") + "\\src\\BaseDatos"+ "\\UsersClients.txt");
+	
+	//Peliculas
+	public static File Peli = new File(System.getProperty("user.dir") + "\\src\\BaseDatos"+ "\\Peliculas.txt");
+	
+	//Salas
+	public static File Sal = new File(System.getProperty("user.dir") + "\\src\\BaseDatos"+ "\\Salas.txt");
+	
+	//Menus
 	public static File Menu = new File(System.getProperty("user.dir") + "\\src\\BaseDatos"+"\\Menus.txt");
 	public static File MenIni = new File(System.getProperty("user.dir") + "\\src\\BaseDatos"+"\\MenuInicio.txt");
-	//User_Inv
-	//public static File U_Cli = new File("UsersClients.txt"); Tiquete
-	//public static File U_Cli = new File("UsersClients.txt"); Pago
-	//public static File U_Cli = new File("UsersClients.txt"); Asiento
-	//public static File U_Cli = new File("UsersClients.txt"); Funcion
-	//public static File U_Cli = new File("UsersClients.txt"); Pelicula
-	//Sala
 	
 	public static void Write(File n, ArrayList<Object> A){
 		try{
@@ -88,11 +92,9 @@ public class SaveObject {
 				z.println();
 				y.close();
 				z.close();
+				
 			}
-			
-			
-			
-			
+
 		}catch (Exception e) {
 			System.out.println("Hay un error "+e);
 		}
@@ -104,7 +106,6 @@ public class SaveObject {
 		try{
 			FileReader x1= new FileReader(n);
 			BufferedReader y1= new BufferedReader(x1);
-			
 			String aux;
 			aux=y1.readLine();
 			while(aux != null) {
@@ -123,7 +124,16 @@ public class SaveObject {
 					(DatosTeatro.opCli).add((OpcionDeMenu)new CambiarAsiento());
 					(DatosTeatro.opCli).add((OpcionDeMenu)new ShowOpc());
 					(DatosTeatro.opCli).add((OpcionDeMenu)new RecargarTarjetad());
+				}else if (n==SaveObject.Peli) {
+					//Cargar las peliculaS
+					Pelicula y = new Pelicula((String)x[0],(String)x[1],(String)x[2],Integer.parseInt((String)x[3]));
+					(Pelicula.Cartelera).add(y);
+				}else if(n==SaveObject.Sal) {
+					//Cargar Salas
+					Sala z = new Sala(Integer.parseInt((String)x[0]),Integer.parseInt((String)x[1]));
+					(DatosTeatro.S).add(z);
 				}
+				
 				aux=y1.readLine();
 			}
 			x1.close();
