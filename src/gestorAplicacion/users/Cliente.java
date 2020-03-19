@@ -61,15 +61,30 @@ public class Cliente extends User_R {
 		Iterator<Tiquete> iterador = Tiquetes.iterator();
 		while (iterador.hasNext()) {
 			Tiquete tiquete = iterador.next();
-			System.out.println(contador++ + ". " + " Codigo: " + tiquete.getCodigo());
-			System.out.println("Fecha: " + tiquete.getEvento().getFecha().getTime());
-			System.out.println("Pelicula: " + tiquete.getEvento().verPelicula());
-			System.out.println("Asiento: " + tiquete.getAsiento().getCodigo());
+			if(!tiquete.getRefPago().isPagado()) {
+				System.out.println("=== Deudas pendientes: ===");
+				System.out.println(contador++ + ". " + " Codigo: " + tiquete.getCodigo());
+				System.out.println("Fecha: " + tiquete.getEvento().getFecha().getTime());
+				System.out.println("Pelicula: " + tiquete.getEvento().verPelicula());
+				System.out.println("Asiento: " + tiquete.getAsiento().getCodigo());
+			}else {
+				System.out.println("=== Tiquetes pagados: ===");
+				System.out.println(contador++ + ". " + " Codigo: " + tiquete.getCodigo());
+				System.out.println("Fecha: " + tiquete.getEvento().getFecha().getTime());
+				System.out.println("Pelicula: " + tiquete.getEvento().verPelicula());
+				System.out.println("Asiento: " + tiquete.getAsiento().getCodigo());
+			}
+			
 		}
 	}
 	
 	public Tiquete seleccionarTiquete(int indice) {
-		return Tiquetes.get(indice);
+		try {
+			return Tiquetes.get(indice);
+		}catch(IndexOutOfBoundsException e) {
+			return null;
+		}
+		
 	}
 
 	public ArrayList<Tiquete> getTiquetes() {
@@ -89,3 +104,4 @@ public class Cliente extends User_R {
 	}
 
 }
+
