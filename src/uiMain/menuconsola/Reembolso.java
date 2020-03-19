@@ -25,9 +25,16 @@ public class Reembolso extends OpcionDeMenu {
 		System.out.println("Lista de sus tiquetes: ");
 		usuario.mostrarTiquetes();
 		System.out.println("Digite el numero de la lista, correspondiente al tiquete al cual desea solicitar un reembolso y cancelar su asistencia");
-		int numero = sc.nextInt();
 		
-		Tiquete tiquete = usuario.seleccionarTiquete(numero);
+		Tiquete tiquete=null;
+		do{
+			int numero = sc.nextInt();
+			tiquete = usuario.seleccionarTiquete(numero);
+			if(tiquete==null) {
+				System.out.println("AVISO: El tiquete seleccionado no se encuentra disponible");
+			}
+		}while(tiquete==null);
+		
 		
 		Pago pago = tiquete.getRefPago();
 		
