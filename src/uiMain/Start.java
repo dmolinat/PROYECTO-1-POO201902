@@ -19,7 +19,6 @@ import gestorAplicacion.users.Cliente;
 import gestorAplicacion.users.User_R;
 import uiMain.menuconsola.CambiarAsiento;
 import uiMain.menuconsola.EscogerEvento;
-import uiMain.menuconsola.InInv;
 import uiMain.menuconsola.MenuDeConsola;
 import gestorAplicacion.DatosTeatro;
 import gestorAplicacion.Funcion;
@@ -40,9 +39,19 @@ public class Start {
 			SaveObject.Read(SaveObject.MenIni);
 		}else {
 			ArrayList<OpcionDeMenu> op1 = DatosTeatro.Ini.getOp();
-			(op1).add(new Login());(op1).add(new InInv());(op1).add(new NewUser());
+			(op1).add(new Login());(op1).add(new NewUser());
 			DatosTeatro.Ini.setOp(op1);
 			SaveObject.Write(SaveObject.MenIni);
+		}
+		
+		//Cargar las peliculas
+		if(SaveObject.Peli.exists()) {
+			SaveObject.Read(SaveObject.Peli);
+		}
+		
+		//Cargar Salas:
+		if(SaveObject.Sal.exists()) {
+			SaveObject.Read(SaveObject.Sal);
 		}
 		
 		
@@ -68,26 +77,55 @@ public class Start {
 		
 		
 		
-		//Agregando Películas
-		Pelicula.Cartelera=new ArrayList();
-		Pelicula.Cartelera.add(new Pelicula("Sonic La pelicula","Ciencia ficcion","Jeff Fowler",2020));
-		Pelicula.Cartelera.add(new Pelicula("Interestelar", "Ciencia ficcion", "Christopher Nolan",2014));
-		Pelicula.Cartelera.add(new Pelicula("El Hombre Invisible","Ciencia ficcion","Leigh Whannell",2020));
-		Pelicula.Cartelera.add(new Pelicula("El llamado Salvaje","Drama/Aventura","Chris Sanders",2020));
-		Pelicula.Cartelera.add(new Pelicula("Los caballeros","Accion","Guy Ritchier",2020));
-			
-		
 		//Agregando Funciones
 		ArrayList<Funcion> aux = new ArrayList();
-		aux.add(new Funcion(Pelicula.Cartelera.get(0),salas.get(0),new GregorianCalendar(2020, 04, 20, 13, 30)));
-		aux.add(new Funcion(Pelicula.Cartelera.get(0),salas.get(1),new GregorianCalendar(2020, 04, 20, 20, 30)));
-		aux.add(new Funcion(Pelicula.Cartelera.get(0),salas.get(2),new GregorianCalendar(2020, 04, 21, 13, 30)));
-		aux.get(0).anadirAsientos();
-		aux.get(1).anadirAsientos();
-		aux.get(2).anadirAsientos();
+		aux.add(new Funcion(Pelicula.Cartelera.get(0),(DatosTeatro.S).get(0),new GregorianCalendar(2020, 04, 16, 13, 30)));
+		aux.add(new Funcion(Pelicula.Cartelera.get(0),(DatosTeatro.S).get(1),new GregorianCalendar(2020, 04, 17, 20, 30)));
+		aux.add(new Funcion(Pelicula.Cartelera.get(0),(DatosTeatro.S).get(2),new GregorianCalendar(2020, 04, 21, 13, 30)));
+		
+		ArrayList<Funcion> aux1 = new ArrayList();
+		aux1.add(new Funcion(Pelicula.Cartelera.get(1),(DatosTeatro.S).get(0),new GregorianCalendar(2020, 03, 28, 13, 30)));
+		aux1.add(new Funcion(Pelicula.Cartelera.get(1),(DatosTeatro.S).get(4),new GregorianCalendar(2020, 04, 20, 20, 30)));
+		aux1.add(new Funcion(Pelicula.Cartelera.get(1),(DatosTeatro.S).get(3),new GregorianCalendar(2020, 04, 1, 23, 30)));
+	
+		ArrayList<Funcion> aux2 = new ArrayList();
+		aux2.add(new Funcion(Pelicula.Cartelera.get(2),(DatosTeatro.S).get(3),new GregorianCalendar(2020, 03, 29, 13, 30)));
+		aux2.add(new Funcion(Pelicula.Cartelera.get(2),(DatosTeatro.S).get(2),new GregorianCalendar(2020, 03, 30, 20, 30)));
+		aux2.add(new Funcion(Pelicula.Cartelera.get(2),(DatosTeatro.S).get(1),new GregorianCalendar(2020, 04, 3, 22, 30)));
+		
+		ArrayList<Funcion> aux3 = new ArrayList();
+		aux3.add(new Funcion(Pelicula.Cartelera.get(3),(DatosTeatro.S).get(3),new GregorianCalendar(2020, 04, 10, 13, 30)));
+		aux3.add(new Funcion(Pelicula.Cartelera.get(3),(DatosTeatro.S).get(3),new GregorianCalendar(2020, 04, 12, 20, 30)));
+		aux3.add(new Funcion(Pelicula.Cartelera.get(3),(DatosTeatro.S).get(4),new GregorianCalendar(2020, 03, 29, 21, 30)));
+		
+		ArrayList<Funcion> aux4 = new ArrayList();
+		aux4.add(new Funcion(Pelicula.Cartelera.get(4),(DatosTeatro.S).get(0),new GregorianCalendar(2020, 03, 30, 13, 30)));
+		aux4.add(new Funcion(Pelicula.Cartelera.get(4),(DatosTeatro.S).get(0),new GregorianCalendar(2020, 04, 15, 20, 30)));
+		aux4.add(new Funcion(Pelicula.Cartelera.get(4),(DatosTeatro.S).get(2),new GregorianCalendar(2020, 04, 12, 20, 30)));
 		
 		
-		Pelicula.Cartelera.get(0).setFuncions(aux);
+		for(int i=0;i<aux.size();i++) {
+			aux.get(i).anadirAsientos();
+			aux1.get(i).anadirAsientos();
+			aux2.get(i).anadirAsientos();
+			aux3.get(i).anadirAsientos();
+			aux4.get(i).anadirAsientos();
+		}
+		
+		for(int i=0;i<Pelicula.Cartelera.size();i++) {
+			if(i==0) {
+				Pelicula.Cartelera.get(i).setFuncions(aux);;
+			}else if (i==1) {
+				Pelicula.Cartelera.get(i).setFuncions(aux1);
+			}else if(i==2) {
+				Pelicula.Cartelera.get(i).setFuncions(aux2);
+			}else if(i==3) {
+				Pelicula.Cartelera.get(i).setFuncions(aux3);
+			}else {
+				Pelicula.Cartelera.get(i).setFuncions(aux4);
+			}
+		}
+		
 		
 		//Iniciar Programa
 		Start.On();
@@ -102,8 +140,6 @@ public class Start {
 		int op=-1;
 		System.out.println("Bienvenido a la APP de Teatros SA");
 		do {
-			System.out.println(DatosTeatro.Descripcion);
-			
 			for(int i=0;i<(DatosTeatro.Ini.getOp()).size();i++) {
 				System.out.println("Presiona "+i+": para "+((DatosTeatro.Ini.getOp()).get(i).mostrar()));
 			}
@@ -119,7 +155,6 @@ public class Start {
 		}while(op!=3);
 		
 	}
-	
 	public static void Off() {
 		System.out.println("!!AVISO: se ha salido de la aplicación¡¡");
 	}
