@@ -24,7 +24,7 @@ public class Login extends OpcionDeMenu {
 				}
 			}
 			
-			if(!op.equals("Y")&&!User_R.LogIn(user,pass).equals("AVISO: Usuario invalido")){
+			if(!op.equals("Y")&&!User_R.LogIn(user,pass).equals("AVISO: Cuenta no registrada")){
 				System.out.println(User_R.LogIn(user,pass));
 				((Cliente)DatosTeatro.userLive).Opci();
 			}else if(!op.equals("Y")){
