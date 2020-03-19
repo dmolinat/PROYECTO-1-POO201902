@@ -24,13 +24,21 @@ public class Login extends OpcionDeMenu {
 				}
 			}
 			
+			if(!op.equals("Y")&&!User_R.LogIn(user,pass).equals("AVISO: Usuario invalido")){
+				System.out.println(User_R.LogIn(user,pass));
+				((Cliente)DatosTeatro.userLive).Opci();
+			}else if(!op.equals("Y")){
+				System.out.println(User_R.LogIn(user,pass));
+				user=null;
+				pass=null;
+			}
+			
 		}while(user==null && pass==null);
-		if(!op.equals("N")) {
-			System.out.println(User_R.LogIn(user,pass));
-			((Cliente)DatosTeatro.userLive).Opci();
-		}
-		
 	}
+	
+
+	
+
 
 	@Override
 	public String mostrar() {
