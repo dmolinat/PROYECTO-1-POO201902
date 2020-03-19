@@ -34,6 +34,9 @@ public class EscogerEvento extends OpcionDeMenu {
             System.out.println("Elija una pelicula");
             sel = sc.nextInt();
             pel = Pelicula.ElegirPelicula(sel);
+            if(pel==null) {
+            	System.out.println("AVISO: No esta disponible la pelicula seleccionada");
+            }
         }
         System.out.println("Elija una funcion");
         if (pel.getFuncions()==null){
@@ -54,6 +57,9 @@ public class EscogerEvento extends OpcionDeMenu {
             System.out.println("¿Qué funcion desea reservar?:");
             sel = sc.nextInt();
             funcion = pel.elegirFuncion(sel);
+            if(funcion==null) {
+            	System.out.println("AVISO: La funcion seleccionada no se encuentra disponible");
+            }
         }
         
  
