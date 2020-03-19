@@ -19,11 +19,8 @@ public class Pelicula {
         this.director=director;
         this.añoLanzamiento=año;
     }
-    public void verInfo(){
-        System.out.println("Nombre: "+nombre);
-        System.out.println("Genero: "+genero);
-        System.out.println("Director: "+director);
-        System.out.println("Año de lanzamiento: "+añoLanzamiento);
+    public String verInfo(){
+        return "Nombre: "+nombre + " Genero: "+ genero + " Director: "+director + " Año de lanzamiento: "+añoLanzamiento;
     }
     public String getNombre(){
         return nombre;
