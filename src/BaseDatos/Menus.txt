@@ -1,0 +1,1 @@
+uiMain.menuconsola.EscogerEvento@3d4eac69,uiMain.menuconsola.PagarTiquete@42a57993,uiMain.menuconsola.Reembolso@75b84c92,uiMain.menuconsola.CambiarAsiento@6bc7c054,uiMain.menuconsola.ShowOpc@232204a1,uiMain.menuconsola.RecargarTarjetad@4aa298b7
