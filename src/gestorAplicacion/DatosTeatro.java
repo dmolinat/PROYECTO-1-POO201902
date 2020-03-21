@@ -16,6 +16,7 @@ public class DatosTeatro {
 	public static ArrayList<OpcionDeMenu> opCli = new ArrayList();
 	public static ArrayList<User_R> U = new ArrayList();
 	public static ArrayList<MenuDeConsola> Men = new ArrayList();
+	public static ArrayList<Sala> S = new ArrayList();
 	
 	private static int PersonaTeatro = U.size();
 	private int GananciasDiarias = 0;
