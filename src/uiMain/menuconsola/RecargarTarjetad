@@ -1,6 +1,8 @@
-import gestorAplicacion.users.Cliente;
+package uiMain.menuconsola;
 
+import gestorAplicacion.users.Cliente;
 import gestorAplicacion.DatosTeatro;
+import java.util.Scanner;
 
 public class RecargarTarjetad extends OpcionDeMenu{
 
