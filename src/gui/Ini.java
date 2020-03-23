@@ -234,7 +234,28 @@ public class Ini extends Application {
 						+ "Sabaneta, Antioquia\n");
 			}else if (i2==4){
 				//Keith
-				((Label)L).setText("KEITH");
+				((Label)L).setText("KEITH DAVID KELSY DIAZ"
+						+ "\n"
+						+ "SOBRE MI: Soy estudiante de segundo año de Ingenieria de Sistemas\n"
+						+ " e informática en la Universidad Nacional de Colombia, sede Medellín.\n"
+						+ "soy alguien apasionado por la música, la tecnología y la informatica, he \n"
+						+ "participado en algunos proyectos de desarrollo informático en mi vida académica\n"
+						+ "me gusta aprender cada día cosas nuevas por lo que siempre busco alternativas \n"
+						+ "de estudio con las que pueda enriquecer mis conocimientos"
+						+ "FORMACIÓN:\n"
+						+ "-Bachiller\n"
+						+ "   Escuela Normal Superior Lacides Iriarte Dic.2017\n"
+						+ "-Estudiante de Pregrado en Ingenieria de Sistemas e Informática\n"
+						+ "   Universidad Nacional De Colombia, Sede Medellín. Vigente\n"
+						+ "\n"
+						+ "IDIOMAS:\n"
+						+ "Español: Nativo\n"
+						+ "Ingles: B1-B2 (Medio-Alto)\n"
+						+ "\n"
+						+ "CONTACTO:\n"
+						+ "Telefono: 3126127024\n"
+						+ "Correo: kkelsy@unal.edu.co\n"
+						+ "Sahagún, Córdoba\n");
 			}
 		}
 		
