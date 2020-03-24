@@ -10,7 +10,7 @@ import uiMain.menuconsola.OpcionDeMenu;
 
 
 public class DatosTeatro {
-	
+	public static ArrayList <Object> Datos = new ArrayList();
 	public static User_R userLive;
 	public static MenuDeConsola Ini = new MenuDeConsola();
 	public static ArrayList<OpcionDeMenu> opCli = new ArrayList();
