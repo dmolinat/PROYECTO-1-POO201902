@@ -10,7 +10,7 @@ public class Pelicula {
 	private String genero;
 	private String director;
 	private int añoLanzamiento;
-    public static ArrayList<Pelicula> Cartelera;
+    public static ArrayList<Pelicula> Cartelera = new ArrayList();
     private ArrayList<Funcion> funciones;
     
     public Pelicula(String nombre,String genero,String director,int año){
