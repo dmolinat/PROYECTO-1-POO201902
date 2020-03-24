@@ -1,13 +1,21 @@
 package gui;
 
 
+import gestorAplicacion.users.Cliente;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,16 +27,29 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import uiMain.Start;
+import uiMain.menuconsola.Descripcion;
+import uiMain.menuconsola.Login;
+import uiMain.menuconsola.NewUser;
+import uiMain.menuconsola.Salir;
 
 public class Ini extends Application {
 	static int con=2;
 	
+	private static GridPane P3 = new GridPane();
+	public static GridPane getP3() {
+		return P3;
+	}
+	
+	
 	@Override
 	public void start(Stage stg) throws Exception {
+		Start.On();
 		stg.setTitle("Inicio");
 		
 		
@@ -36,14 +57,19 @@ public class Ini extends Application {
 		//Creacion de Panes:
 		GridPane P1 = new GridPane();
 		GridPane P2 = new GridPane();
+		P2.setPrefSize(800, 800);
 		
 		P1.setPadding(new Insets(15,15,15,15));
-		P1.setPadding(new Insets(15,15,15,15));
+		P2.setPadding(new Insets(15,15,15,15));
+		P2.setPrefWidth(500);
 		
-		GridPane P3 = new GridPane();
-		P3.setPrefHeight(150);
-		P3.setPrefWidth(150);
-		P1.add(P3, 0, 0,4,1);
+		
+		P3.setPrefHeight(300);
+		P3.setPrefWidth(300);
+		P3.setPadding(new Insets(15,15,15,15));
+		P3.setVgap(10);
+		P1.setPrefSize(500, 500);
+		P1.add(P3, 0, 1,4,1);
 		
 		
 		//Imagenes (ImageView)
@@ -54,7 +80,7 @@ public class Ini extends Application {
 		ImT1.setFitWidth(350);
 		//Controlador	
 		Label Lim1 = new Label("Teatro:",ImT1);
-		Lim1.setFont(new Font("New Times Roman",30));
+		Lim1.setFont(new Font("Times New Roman",20));
 		P4.add(Lim1, 0, 0,4,1);
 		ImEnt M1 = new ImEnt();
 		Lim1.setContentDisplay(ContentDisplay.BOTTOM);
@@ -62,24 +88,19 @@ public class Ini extends Application {
 		
 		P4.setPrefHeight(450);
 		P4.setPrefWidth(450);
-		P1.add(P4, 0, 1,4,1);
+		P1.add(P4, 0, 2,4,1);
 		
-		//DescripciÃ³n y saludo
+		//Saludo
 		GridPane P5 = new GridPane();
-		Label L2 = new Label("!Bienvenidos a la APP Teatros SAÂ¡"); //Cambiar tipo de letra,fuente,color,etc
-		L2.setFont(new Font("New Times Roman",30));
+		Label L2 = new Label("!Bienvenidos a la APP Teatros SA¡"); //Cambiar tipo de letra,fuente,color,etc
+		L2.setFont(new Font("Times New Roman",20));
 		L2.setTextFill(Color.BLUE);
-		
-		Label LD = new Label("La aplicaciÃ³n ofrece una serie de herramientas\n"
-				+ "para el uso cÃ³modo del usuario que ingrese. En Ã©l podrÃ¡ realizar\n"
-				+ "las operaciones necesarias para lograr obtener un tiquete a alguna\n"
-				+ "funciÃ³n del usuario de forma satisfactoria. Desde escoger el evento\n"
-				+ "con su asiento respectivo, hasta abstenerse de ir con nuestro control\n"
-				+ "de reembolsos.");
 		P5.add(L2, 0,0,4,1);
 		P5.add(LD, 0, 1,4,1);
-		P5.setPrefHeight(100);
-		P5.setPrefHeight(100);
+		
+		
+		P5.setPrefHeight(160);
+		P5.setPrefWidth(500);
 		P2.add(P5, 0, 0,4,1);
 				
 		//Hoja de Vida:
@@ -88,19 +109,17 @@ public class Ini extends Application {
 				+ "CREADORES:");
 		L31.setTextAlignment(TextAlignment.CENTER);
 		L31.setTextFill(Color.DARKRED);
-		L31.setFont(new Font("New Times Roman",22));
-		
-		
+		L31.setFont(new Font("Times New Roman",22));
 		P6.add(L31, 3, 0);
 		Label L3 = new Label("DENILSON ANDRES MOLINA TRUYOT\n"
 				+ "\n"
-				+ "SOBRE MI: Soy un estudiante con mÃ¡s dos aÃ±os cursando la carrera\n"
-				+ "de Ing.Sistemas en la Universidad Nacional de Comlombia. SÃ© desempeÃ±arme\n"
-				+  "en los conceptos de estructura de datos y los estÃ¡ndares de eficiencia\n"
-				+ "a nivel mundia. Doy lo mejor de mÃ­ en los proyectos y he tenido contactos\n"
-				+ "con el desarrollo de software y ediciÃ³n de videos bajo ciertas plataformas.\n"
+				+ "SOBRE MI: Soy un estudiante con dos anos cursando la carrera\n"
+				+ "de Ing.Sistemas en la Universidad Nacional de Comlombia. Se desempeñarme\n"
+				+  "en los conceptos de estructura de datos y los estándares de eficiencia\n"
+				+ "a nivel mundia. Doy lo mejor de mi en los proyectos y he tenido contactos\n"
+				+ "con el desarrollo de software y edición de videos bajo ciertas plataformas.\n"
 				+ "\n"
-				+ "FORMACIÃ“N:\n"
+				+ "FORMACION:\n"
 				+ "Bachiller: Colegio Ateneo Moderno de Santa Marta. Dic.2017\n"
 				+ "Estudiante de Pregrado en Ing. Sistemas. Vigente.\n"
 				+ "\n"
@@ -116,16 +135,50 @@ public class Ini extends Application {
 		L3.setBorder(new Border(new BorderStroke(Color.DARKBLUE,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
 		L3.setTextAlignment(TextAlignment.CENTER);
 		P6.add(L3, 0,1,4,1);
-		P2.add(P6, 0, 1,4,1);
+		P2.add(P6, 0,1,4,1);
 		//Oidor de las hojas de vida
 		HojClick M2 = new HojClick();
 		L3.setOnMouseClicked(M2);
 		
 		
 		//Menu de pantalla de Inicio
+		VBox ContMen;
+		MenuBar MenB = new MenuBar();
+		Menu Men = new Menu("Info");
+		MenuItem S = new MenuItem((new Salir()).mostrar());
+		MenuItem D = new MenuItem((new Descripcion()).mostrar());
+		Men.getItems().add(S);
+		Men.getItems().add(D);
+		MenB.getMenus().add(Men);
+		//Oidores de opcion de Menu
+		OpIni Op1 = new OpIni();
+		S.setOnAction(Op1);
+		OpIni Op2 = new OpIni();
+		D.setOnAction(Op2);
 		
 		
-		Scene Vent1 = new Scene(new HBox(P1,P2),950,600);
+		//Primeras 3 opciones de menu (Login y registrarse)
+		Menu Men2 = new  Menu("Login");
+		MenuItem Log = new MenuItem(new Login().mostrar());
+		MenuItem Reg = new MenuItem(new NewUser().mostrar());
+		Men2.getItems().add(Log);
+		Men2.getItems().add(Reg);
+		MenB.getMenus().add(Men2);
+		//Oidores 
+		OpIni Op3 = new OpIni();
+		Log.setOnAction(Op3);
+		OpIni Op4 = new OpIni();
+		Reg.setOnAction(Op4);
+		
+		
+		//Agregando el menuBar en el VBox
+		ContMen = new VBox(MenB);
+		ContMen.setPrefHeight(100);
+		ContMen.setPrefWidth(100);
+		P1.add(ContMen, 0,0,4,1);
+		
+		
+		Scene Vent1 = new Scene(new HBox(P1,P2),950,700);
 		stg.setScene(Vent1);
 		
 		stg.show();
@@ -170,13 +223,13 @@ public class Ini extends Application {
 				//Denilson
 				((Label)L).setText("DENILSON ANDRES MOLINA TRUYOT\n"
 						+ "\n"
-						+ "SOBRE MI: Soy un estudiante con mÃ¡s dos aÃ±os cursando la carrera\n"
-						+ "de Ing.Sistemas en la Universidad Nacional de Comlombia. SÃ© desempeÃ±arme\n"
-						+  "en los conceptos de estructura de datos y los estÃ¡ndares de eficiencia\n"
-						+ "a nivel mundia. Doy lo mejor de mÃ­ en los proyectos y he tenido contactos\n"
-						+ "con el desarrollo de software y ediciÃ³n de videos bajo ciertas plataformas.\n"
+						+ "SOBRE MI: Soy un estudiante con dos anos cursando la carrera\n"
+						+ "de Ing.Sistemas en la Universidad Nacional de Comlombia. Se desempeñarme\n"
+						+  "en los conceptos de estructura de datos y los estándares de eficiencia\n"
+						+ "a nivel mundia. Doy lo mejor de mi en los proyectos y he tenido contactos\n"
+						+ "con el desarrollo de software y edición de videos bajo ciertas plataformas.\n"
 						+ "\n"
-						+ "FORMACIÃ“N:\n"
+						+ "FORMACION:\n"
 						+ "Bachiller: Colegio Ateneo Moderno de Santa Marta. Dic.2017\n"
 						+ "Estudiante de Pregrado en Ing. Sistemas. Vigente.\n"
 						+ "\n"
@@ -193,19 +246,19 @@ public class Ini extends Application {
 						+ "\n"
 						+ "SOBRE MI: Soy estudiante de cuarto semestre de Ingenieria de Sistemas\n"
 						+ "en la Universidad Nacional de Colombia, sede Medellin. He participado\n"
-						+ "en el desarrollo de proyectos de software durante mas de un aÃ±o, y me\n"
+						+ "en el desarrollo de proyectos de software durante mas de un año, y me\n"
 						+ "especializo en el area de la programacion orientada a objetos.\n"
 						+ "Me gusta trabajar en equipo, y aprender cosas nuevas sobre el mundo\n"
 						+ "de la programacion cada dia.\n"
 						+ "\n"
-						+ "FORMACIÃ“N:\n"
+						+ "FORMACIÓN:\n"
 						+ "-Bachiller\n"
 						+ "   Institucion Educativa Yarumito. Dic.2017\n"
 						+ "-Estudiante de Pregrado en Ingenieria de Sistemas e Informatica\n"
 						+ "   Universidad Nacional De Colombia, Sede Medellin. Vigente\n"
 						+ "\n"
 						+ "IDIOMAS:\n"
-						+ "EspaÃ±ol: Nativo\n"
+						+ "Español: Nativo\n"
 						+ "Ingles: B1-B2 (Medio-Alto)\n"
 						+ "\n"
 						+ "CONTACTO:\n"
@@ -219,14 +272,14 @@ public class Ini extends Application {
 						+ "SOBRE MI: Soy estudiante de cuarto semestre de Ingenieria de Sistemas\n"
 						+ "en la Universidad Nacional de Colombia, sede Medellin."
 						+ "\n"
-						+ "FORMACIÃ“N:\n"
+						+ "FORMACIÓN:\n"
 						+ "-Bachiller\n"
 						+ "   Gimnasio Los Alacazares. Dic.2017\n"
 						+ "-Estudiante de Pregrado en Ingenieria de Sistemas e Informatica\n"
 						+ "   Universidad Nacional De Colombia, Sede Medellin. Vigente\n"
 						+ "\n"
 						+ "IDIOMAS:\n"
-						+ "EspaÃ±ol: Nativo\n"
+						+ "Español: Nativo\n"
 						+ "Ingles: B1-B2 (Medio-Alto)\n"
 						+ "\n"
 						+ "CONTACTO:\n"
@@ -243,7 +296,7 @@ public class Ini extends Application {
 						+ "me gusta aprender cada día cosas nuevas por lo que siempre busco alternativas \n"
 						+ "de estudio con las que pueda enriquecer mis conocimientos."
 						+ "\n"
-						+ "FORMACIÃ“N:\n"
+						+ "FORMACION:\n"
 						+ "-Bachiller\n"
 						+ "   Escuela Normal Superior Lacides Iriarte Dic.2017\n"
 						+ "-Estudiante de Pregrado en Ingenieria de Sistemas e Informática\n"
@@ -261,5 +314,36 @@ public class Ini extends Application {
 		}
 		
 	}
+	
+	//Acciones de OpDeMenu
+	private static Label LD = new Label("");
+	
+	public static Label getLD() {
+		LD.setFont(new Font("Times New Roman",15));
+		return LD;
+	}
+		
+	
+	private static Alert a = new Alert(AlertType.NONE);
+	public static Alert getAlertA() {
+		return a;
+	}
+	class OpIni implements EventHandler<ActionEvent>{
+		public void handle(ActionEvent Op) {
+			Object op = Op.getSource();
+			
+			if((((MenuItem)op).getText()).equals("Salir")){
+				(new Salir()).ejecutar();
+			}else if((((MenuItem)op).getText()).equals("Descripcion")){
+				(new Descripcion()).ejecutar();
+			}else if((((MenuItem)op).getText()).equals("Iniciar Sesion")) {
+				(new Login()).ejecutar();
+			}else {
+				(new Cliente()).crearUser(1);
+			}
+			
+		}
+	}
+	
 
 }
