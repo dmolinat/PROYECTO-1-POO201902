@@ -4,6 +4,6 @@ import gestorAplicacion.Funcion;
 
 public interface User {
 	
-	public  User_R crearUser(int Op);
+	public  void crearUser(int Op);
 	
 }
