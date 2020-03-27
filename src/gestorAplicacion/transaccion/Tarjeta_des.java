@@ -1,6 +1,6 @@
 package gestorAplicacion.transaccion;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -39,14 +39,14 @@ public class Tarjeta_des{
 	public void setValorRecargado(double valorRecargado) {
 		this.valorRecargado=valorRecargado;
 	}
-	public Calendar getFechaVen() {
-		return this.fechaDeVencimiento;
+	public Date getFechaVen() {
+		return this.fechaDeVencimiento.getTime();
 	}
 	public void setFechaVen(Calendar fechaDeVencimiento) {
 		this.fechaDeVencimiento = fechaDeVencimiento;
 	}
-	public Calendar getFechaExp() {
-		return this.fechaDeExpedicion;
+	public Date getFechaExp() {
+		return this.fechaDeExpedicion.getTime();
 	}
 	public void setFechaExp(Calendar fechaDeExpedicion) {
 		this.fechaDeExpedicion = fechaDeExpedicion;
