@@ -608,5 +608,5 @@ public abstract class User_R implements User{
 	}
 	public void setSexo(String sexo) {
 		this.sexo=sexo;
-	}	
+	}
 }
