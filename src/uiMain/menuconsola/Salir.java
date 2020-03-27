@@ -14,7 +14,7 @@ public class Salir extends OpcionDeMenu {
 	public void ejecutar() {
 		Ini.getAlertA().setAlertType(AlertType.CONFIRMATION);
 		Ini.getAlertA().setTitle(mostrar());
-		Ini.getAlertA().setHeaderText("Â¿Estas seguro que deseas salir?");
+		Ini.getAlertA().setHeaderText("¿Estas seguro que deseas salir?");
 		
 		Optional<ButtonType> result = Ini.getAlertA().showAndWait();
 		if (!(result.get() == ButtonType.CANCEL)){
