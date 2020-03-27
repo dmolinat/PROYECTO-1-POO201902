@@ -27,7 +27,7 @@ public class NewUser extends OpcionDeMenu {
 		//	System.out.println("Presione 1: Para crear nueva cuenta");
 		//	op=in.nextInt();
 		//	if(op!=1 && op!=2) {
-		//		System.out.println("¬°¬°ERROR: LA OPCI√ìN NO EST√Å DISPONIBLE!!");
+		//		System.out.println("°°ERROR: LA OPCI”N NO EST¡ DISPONIBLE!!");
 		//	}
 		//}while(op!=1 && op!=2);
 		//	(DatosTeatro.U).add(new Cliente().crearUser(op));
