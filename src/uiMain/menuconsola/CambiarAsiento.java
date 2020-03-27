@@ -1,5 +1,6 @@
 package uiMain.menuconsola;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import gestorAplicacion.Asiento;
@@ -7,9 +8,35 @@ import gestorAplicacion.DatosTeatro;
 import gestorAplicacion.Funcion;
 import gestorAplicacion.transaccion.Tiquete;
 import gestorAplicacion.users.Cliente;
+import gui.Fun.FieldPanel;
+import gui.Fun.Funcional;
+import gui.Fun.oidor.ActionChangeChair;
+import gui.Fun.oidor.ActionDelete;
+import gui.Fun.oidor.ActionPayTicket;
+import gui.Fun.oidor.AddPayTicketInTextField;
+import gui.Fun.oidor.AddPayWithChairEvent;
+import gui.Fun.oidor.TableroAsientos;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import uiMain.menuconsola.OpcionDeMenu;
 
 public class CambiarAsiento extends OpcionDeMenu {
+	
+	private static FieldPanel campoSetChair;
+	public static FieldPanel getcampoSetChair() {
+		return campoSetChair;
+	}
 	
 	public String mostrar() {
 		return "Cambiar Asiento: ";
@@ -17,12 +44,89 @@ public class CambiarAsiento extends OpcionDeMenu {
 	
 	public void ejecutar() {
 		
-		Scanner sc = new Scanner(System.in);
+		Cliente usuario = (Cliente) DatosTeatro.userLive; //esta variable hay que apuntarla al usuario que este loggeado
+		
+		//"-fx-background-color: green;"
+		Funcional.getP2().getChildren().clear();
+		
+		Label nameFun = new Label(mostrar());
+		nameFun.setFont(new Font("Times New Roma",20));
+		nameFun.setTextFill(Color.GRAY);
+		nameFun.setBorder(new Border(new BorderStroke(Color.DARKRED,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+		Funcional.getP2().getChildren().add(nameFun);
+		
+		Label descripF = new Label("Esta opcion le permite cambiar su asiento\n" + "(siempre y cuando no haya pagado el tiquete aun)\n" 
+				+ "1. Seleccione el tiquete\n" + "2. Seleccione el nuevo asiento\n"
+				+ "3. Presione aceptar para confirmar su eleccion");
+		descripF.setFont(new Font("Times New Roma",20));
+		descripF.setTextFill(Color.GRAY);
+		descripF.setBorder(new Border(new BorderStroke(Color.DARKBLUE,BorderStrokeStyle.DOTTED,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+		Funcional.getP2().getChildren().add(descripF);
+		
+		
+		FieldPanel.getSoporte().getChildren().clear();
+		
+		campoSetChair = new FieldPanel("Data: ",new String[] {"Codigo","Asiento"},"Valor seleccionado",null,new Boolean[] {false,false});
+		FieldPanel.getSoporte().setBorder(new Border(new BorderStroke(Color.DODGERBLUE,BorderStrokeStyle.DASHED,CornerRadii.EMPTY,
+				BorderWidths.DEFAULT)));
+		FieldPanel.getSoporte().setAlignment(Pos.CENTER);
+		FieldPanel.getSoporte().setStyle("-fx-background-color: rgba(255, 255, 255, 0.5);");
+		Funcional.getP2().getChildren().add(campoSetChair.getSoporte());
+		Funcional.getP2().setAlignment(Pos.CENTER);
+		
+		ComboBox listTiq = new ComboBox();
+		listTiq.setPromptText("TIQUETES DISPONIBLES");
+		if(!usuario.getTiquetes().isEmpty()) {
+			ArrayList<Integer> deudas = usuario.mostrarTiquetesSinPagar();
+			for(int i=0;i<deudas.size();i++) {
+				listTiq.getItems().add(""+deudas.get(i));
+			}
+			AddPayWithChairEvent M23 = new AddPayWithChairEvent();
+			listTiq.setOnAction(M23);
+		}else {
+			//NotFoundTicketException
+		}
+		
+		Button verMas = new Button("Ver mas...");
+		FieldPanel.getSoporte().add(verMas, 3, 1);
+		FieldPanel.getSoporte().add(listTiq, 2, 1);
+		FieldPanel.getSoporte().setBorder(new Border(new BorderStroke(Color.DARKBLUE,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+		FieldPanel.getSoporte().setAlignment(Pos.CENTER);
+		
+		HBox Botons = new HBox();
+		
+		Button Acep = new Button("Aceptar");
+		Acep.setAlignment(Pos.CENTER_LEFT);
+		Acep.setStyle("-fx-background-color: blue;");
+		Acep.setTextFill(Color.FLORALWHITE);
+		Botons.getChildren().add(Acep);
+		
+		Button Delet = new Button("Borrar");
+		Delet.setTextFill(Color.FLORALWHITE);
+		Delet.setAlignment(Pos.CENTER_RIGHT);
+		Delet.setStyle("-fx-background-color: red;");
+		Botons.getChildren().add(Delet);
+		Botons.setAlignment(Pos.CENTER);
+		Botons.setSpacing(15);
+		
+		ActionDelete M21 = new ActionDelete(campoSetChair);
+		Delet.setOnAction(M21);
+		
+		ActionChangeChair M22 = new ActionChangeChair();
+		Acep.setOnAction(M22);
+		
+		Funcional.getP2().getChildren().add(Botons);
+		
+		
+
+		
+		
+		/*Scanner sc = new Scanner(System.in);
 		
 		Cliente usuario = (Cliente) DatosTeatro.userLive; //esta variable hay que apuntarla al usuario que este loggeado
 		
 		System.out.println("Lista de sus tiquetes: ");
-		usuario.mostrarTiquetes();
+		usuario.mostrarTiquetesSinPagar();
 		
 		if (usuario.getTiquetes().isEmpty()) {
 			System.out.println("No tiene tiquetes asignados");
@@ -75,7 +179,7 @@ public class CambiarAsiento extends OpcionDeMenu {
 				}
 			}
 
-		}
+		}*/
 		
 				
 	}
