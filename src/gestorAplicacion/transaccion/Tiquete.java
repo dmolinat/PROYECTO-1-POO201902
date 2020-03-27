@@ -10,7 +10,7 @@ import java.util.GregorianCalendar;
 
 public class Tiquete {
 	
-	private static int generarCodigo;
+	private static int generarCodigo=0;
 	private int codigo;
 	private Asiento asiento;
 	private Funcion evento;
@@ -18,16 +18,18 @@ public class Tiquete {
 	private Cliente cliente;
 	
 	Tiquete (Asiento asiento, Funcion evento, Pago refPago){
-		this.codigo = generarCodigo++;
 		this.asiento = asiento;
 		this.evento = evento;
 		this.refPago = refPago;
 	}
 
 	public Tiquete() {
-		this.codigo = generarCodigo++;
 	}
-
+	
+	public static int setGenCodigo() {
+		return generarCodigo++;
+	}
+	
 	public int getCodigo() {
 		return codigo;
 	}
