@@ -1,6 +1,9 @@
 package gui;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import gestorAplicacion.users.Cliente;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -46,9 +49,33 @@ public class Ini extends Application {
 		return P3;
 	}
 	
+	private static Stage vent = new Stage();
+	public static Stage getVent() {
+		return vent;
+	}
+	
+	private static Scene s1 = new Scene(new Label());
+	public static Scene getScene1() {
+		return s1;
+	}
+	
+	private static Label LD = new Label("");
+	
+	public static Label getLD() {
+		LD.setFont(new Font("Times New Roman",15));
+		return LD;
+	}
+		
+	
+	private static Alert a = new Alert(AlertType.NONE);
+	public static Alert getAlertA() {
+		return a;
+	}
+	
 	
 	@Override
 	public void start(Stage stg) throws Exception {
+		vent = stg;
 		Start.On();
 		stg.setTitle("Inicio");
 		
@@ -56,8 +83,16 @@ public class Ini extends Application {
 		
 		//Creacion de Panes:
 		GridPane P1 = new GridPane();
+		P1.setAlignment(Pos.CENTER);
+		P1.setPrefSize(Double.MAX_VALUE,Double.MAX_VALUE);
+		P1.setBorder(new Border(new BorderStroke(Color.DARKBLUE,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+		P1.setPadding(new Insets(20,20,20,20));
+		
 		GridPane P2 = new GridPane();
-		P2.setPrefSize(800, 800);
+		P2.setBorder(new Border(new BorderStroke(Color.DARKRED,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+		P2.setAlignment(Pos.CENTER);
+		P2.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		P2.setPadding(new Insets(20,20,20,20));
 		
 		P1.setPadding(new Insets(15,15,15,15));
 		P2.setPadding(new Insets(15,15,15,15));
@@ -69,15 +104,18 @@ public class Ini extends Application {
 		P3.setPadding(new Insets(15,15,15,15));
 		P3.setVgap(10);
 		P1.setPrefSize(500, 500);
+		P3.setAlignment(Pos.CENTER);
 		P1.add(P3, 0, 1,4,1);
 		
 		
 		//Imagenes (ImageView)
 		GridPane P4 = new GridPane();
-		Image image1 = new Image(getClass().getResourceAsStream("/Imagenes/ImT1.png"));
+		P4.setAlignment(Pos.CENTER);
+		Image image1 = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\ImT1.png"));
 		ImageView ImT1= new ImageView(image1);
 		ImT1.setFitHeight(200);
 		ImT1.setFitWidth(350);
+		
 		//Controlador	
 		Label Lim1 = new Label("Teatro:",ImT1);
 		Lim1.setFont(new Font("Times New Roman",20));
@@ -92,22 +130,36 @@ public class Ini extends Application {
 		
 		//Saludo
 		GridPane P5 = new GridPane();
-		Label L2 = new Label("!Bienvenidos a la APP Teatros SA¡"); //Cambiar tipo de letra,fuente,color,etc
+		P5.setAlignment(Pos.CENTER);
+		Label L2 = new Label("¡BIENVENIDOS A LA APP TEATROS SA!"); //Cambiar tipo de letra,fuente,color,etc
 		L2.setFont(new Font("Times New Roman",20));
 		L2.setTextFill(Color.BLUE);
+		L2.setTextAlignment(TextAlignment.CENTER);
+		L2.setAlignment(Pos.CENTER);
+		
 		P5.add(L2, 0,0,4,1);
+		
+		LD.setTextAlignment(TextAlignment.CENTER);
+		LD.setAlignment(Pos.CENTER);
+		P5.setHgap(15);
+		P5.setVgap(15);
 		P5.add(LD, 0, 1,4,1);
 		
 		
-		P5.setPrefHeight(160);
+		P5.setPrefHeight(200);
 		P5.setPrefWidth(500);
+		P5.setBorder(new Border(new BorderStroke(Color.DARKGRAY,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
 		P2.add(P5, 0, 0,4,1);
+		P5.setAlignment(Pos.CENTER);
 				
 		//Hoja de Vida:
 		GridPane P6 = new GridPane();
+		P6.setAlignment(Pos.CENTER);
 		Label L31= new Label("\n"
 				+ "CREADORES:");
 		L31.setTextAlignment(TextAlignment.CENTER);
+		L31.setAlignment(Pos.CENTER);
+		
 		L31.setTextFill(Color.DARKRED);
 		L31.setFont(new Font("Times New Roman",22));
 		P6.add(L31, 3, 0);
@@ -135,7 +187,10 @@ public class Ini extends Application {
 		L3.setBorder(new Border(new BorderStroke(Color.DARKBLUE,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
 		L3.setTextAlignment(TextAlignment.CENTER);
 		P6.add(L3, 0,1,4,1);
+		P6.setHgap(10);
+		P6.setVgap(10);
 		P2.add(P6, 0,1,4,1);
+		
 		//Oidor de las hojas de vida
 		HojClick M2 = new HojClick();
 		L3.setOnMouseClicked(M2);
@@ -150,6 +205,7 @@ public class Ini extends Application {
 		Men.getItems().add(S);
 		Men.getItems().add(D);
 		MenB.getMenus().add(Men);
+		
 		//Oidores de opcion de Menu
 		OpIni Op1 = new OpIni();
 		S.setOnAction(Op1);
@@ -177,35 +233,47 @@ public class Ini extends Application {
 		ContMen.setPrefWidth(100);
 		P1.add(ContMen, 0,0,4,1);
 		
+		HBox Cont = new HBox(P1,P2);
+		Cont.setSpacing(20);
+		Cont.setAlignment(Pos.CENTER);
 		
-		Scene Vent1 = new Scene(new HBox(P1,P2),950,700);
-		stg.setScene(Vent1);
+		s1 = new Scene(Cont,1200,700);
+		vent.setScene(s1);
 		
-		stg.show();
+		vent.show();
 		
 		
 	}
 	
-	public static void main(String args[]) {
-		launch(args);
-	}
+	
+	
 	
 	//Cambiar imagenes
 	class ImEnt implements EventHandler<MouseEvent>{
 
-		public void handle(MouseEvent event) {
+		public void handle(MouseEvent event){
 			Object control = event.getSource();
-			Image image = new Image(getClass().getResourceAsStream("/Imagenes/ImT" + con + ".png"));
-			ImageView Im = new ImageView(image);
-			Im.setFitHeight(200);
-			Im.setFitWidth(350);
 			
 			
-			((Label)control).setGraphic(Im);
-			if (con == 5) {
-				con= 0;
+
+			try {
+				Image image = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\imagenes\\"+"ImT"+con+".png"));
+				ImageView Im = new ImageView(image);
+				Im.setFitHeight(200);
+				Im.setFitWidth(350);
+				
+				
+				((Label)control).setGraphic(Im);
+				if (con == 5) {
+					con= 0;
+				}
+				con++;
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			con++;
+			
 		}
 	}
 	
@@ -316,18 +384,7 @@ public class Ini extends Application {
 	}
 	
 	//Acciones de OpDeMenu
-	private static Label LD = new Label("");
-	
-	public static Label getLD() {
-		LD.setFont(new Font("Times New Roman",15));
-		return LD;
-	}
-		
-	
-	private static Alert a = new Alert(AlertType.NONE);
-	public static Alert getAlertA() {
-		return a;
-	}
+
 	class OpIni implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent Op) {
 			Object op = Op.getSource();
@@ -345,5 +402,10 @@ public class Ini extends Application {
 		}
 	}
 	
+	
+	//Main
+	//public static void main(String args[]) {
+	//	launch(args);
+	//}
 
 }
