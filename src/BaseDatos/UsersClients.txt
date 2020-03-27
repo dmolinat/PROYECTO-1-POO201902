@@ -5,3 +5,6 @@ dmolinat,De,edded,Denilazul,1020332,90,F
 Denilson,Mol,dmolinat2,dmolinat,1231231,19,M
 Denilson,Mol,dmowe,Dddddd,1004353159,31,M
 Wil,Esmit,wilsmid,wilsmid,09112001,34,M
+Dn,Mol,dmolinat3,Denilazul12,100213012,123,M
+dn,ml,Dmolinat4,Denilazul12,1004353159,19,M
+dnr,Mls,Dmolinat5,Denilazul12,1004353159,123,M

@@ -14,8 +14,8 @@ import uiMain.menuconsola.OpcionDeMenu;
 public class Cliente extends User_R {
 	
 	private ArrayList<Tiquete> Tiquetes = new ArrayList();
-	//A√±adir todas las opciones de menu que existan, pero el Cliente solo podr√°
-	//acceder a las que est√©n con available=true
+	//AÒadir todas las opciones de menu que existan, pero el Cliente solo podr·
+	//acceder a las que estÈn con available=true
 	private Tarjeta_des tarjeta;
 	private MenuDeConsola MenCli = new MenuDeConsola();
 	
@@ -55,28 +55,61 @@ public class Cliente extends User_R {
 	
 
 	
-	
-	public void mostrarTiquetes() {
-		int contador = 0;
+	public Tiquete getTiqueteWithCodigo(int cod) {
+		for(int i=0; i<Tiquetes.size();i++) {
+			int auxCod = Tiquetes.get(i).getCodigo();
+			if(auxCod==cod) {
+				return Tiquetes.get(i);
+			}
+		}
+		return new Tiquete();
+	}
+	public ArrayList<Integer> mostrarTiquetesSinPagar() {
 		Iterator<Tiquete> iterador = Tiquetes.iterator();
+		ArrayList<Integer> cods = new ArrayList();
+		
 		while (iterador.hasNext()) {
 			Tiquete tiquete = iterador.next();
 			if(!tiquete.getRefPago().isPagado()) {
-				System.out.println("=== Deudas pendientes: ===");
-				System.out.println(contador++ + ". " + " Codigo: " + tiquete.getCodigo());
-				System.out.println("Fecha: " + tiquete.getEvento().getFecha().getTime());
+				//System.out.println("=== Deudas pendientes: ===");
+				cods.add(tiquete.getCodigo());
+				/*System.out.println("Fecha: " + tiquete.getEvento().getFecha().getTime());
 				System.out.println("Pelicula: " + tiquete.getEvento().verPelicula());
-				System.out.println("Asiento: " + tiquete.getAsiento().getCodigo());
-			}else {
+				System.out.println("Asiento: " + tiquete.getAsiento().getCodigo());*/
+			}/*else {
 				System.out.println("=== Tiquetes pagados: ===");
 				System.out.println(contador++ + ". " + " Codigo: " + tiquete.getCodigo());
 				System.out.println("Fecha: " + tiquete.getEvento().getFecha().getTime());
 				System.out.println("Pelicula: " + tiquete.getEvento().verPelicula());
 				System.out.println("Asiento: " + tiquete.getAsiento().getCodigo());
-			}
-			
+			}*/
 		}
+		return cods;
 	}
+	
+	public ArrayList<Integer> mostrarTicketsPag(){
+		Iterator<Tiquete> iterador = Tiquetes.iterator();
+		ArrayList<Integer> cods = new ArrayList();
+		while (iterador.hasNext()) {
+			Tiquete tiquete = iterador.next();
+			if(tiquete.getRefPago().isPagado()) {
+				//System.out.println("=== Deudas pendientes: ===");
+				cods.add(tiquete.getCodigo());
+				/*System.out.println("Fecha: " + tiquete.getEvento().getFecha().getTime());
+				System.out.println("Pelicula: " + tiquete.getEvento().verPelicula());
+				System.out.println("Asiento: " + tiquete.getAsiento().getCodigo());*/
+			}/*else {
+				System.out.println("=== Tiquetes pagados: ===");
+				System.out.println(contador++ + ". " + " Codigo: " + tiquete.getCodigo());
+				System.out.println("Fecha: " + tiquete.getEvento().getFecha().getTime());
+				System.out.println("Pelicula: " + tiquete.getEvento().verPelicula());
+				System.out.println("Asiento: " + tiquete.getAsiento().getCodigo());
+			}*/
+		}
+		return cods;
+	}
+	
+	
 	
 	public Tiquete seleccionarTiquete(int indice) {
 		try {
@@ -104,4 +137,3 @@ public class Cliente extends User_R {
 	}
 
 }
-

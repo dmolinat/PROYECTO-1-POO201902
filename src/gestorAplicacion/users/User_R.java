@@ -63,7 +63,7 @@ public abstract class User_R implements User{
 		
 		//Ingrese el nombre
 		
-		//Se ingresarÃ¡n los datos de forma secuencial
+		//Se ingresarán los datos de forma secuencial
 		Enter M6 = new Enter();
 		TextField M = new TextField();		
 		
@@ -99,7 +99,7 @@ public abstract class User_R implements User{
 				System.out.print("Ingrese el nombre: "); aux=in.next();
 				if(aux.equals("")||aux.contains(" ")) {
 					System.out.println("===========================");
-					System.out.println("!!ERROR: Nombre invalidoÂ¡Â¡");
+					System.out.println("!!ERROR: Nombre invalido¡¡");
 					System.out.println("===========================");
 					aux=null;
 		}else if(aux.contains("0")||aux.contains("1")||aux.contains("2")||
@@ -107,7 +107,7 @@ public abstract class User_R implements User{
 						aux.contains("6")||aux.contains("7")||aux.contains("8")||
 						aux.contains("9")) {
 					System.out.println("=========================================================");
-					System.out.println("!!ERROR: Los nombres y apellidos no deben llevar numeroÂ¡Â¡");
+					System.out.println("!!ERROR: Los nombres y apellidos no deben llevar numero¡¡");
 					System.out.println("=========================================================");
 					aux=null;
 				}	
@@ -121,7 +121,7 @@ public abstract class User_R implements User{
 				
 				if(aux.equals("")||aux.contains(" ")) {
 					System.out.println("============================");
-					System.out.println("!!ERROR: Apellido invalidoÂ¡Â¡");
+					System.out.println("!!ERROR: Apellido invalido¡¡");
 					System.out.println("============================");
 					aux=null;
 				}else if(aux.contains("0")||aux.contains("1")||aux.contains("2")||
@@ -129,7 +129,7 @@ public abstract class User_R implements User{
 						aux.contains("6")||aux.contains("7")||aux.contains("8")||
 						aux.contains("9")) {
 					System.out.println("=========================================================");
-					System.out.println("!!ERROR: Los nombres y apellidos no deben llevar numerosÂ¡Â¡");
+					System.out.println("!!ERROR: Los nombres y apellidos no deben llevar numeros¡¡");
 					System.out.println("=========================================================");
 					aux=null;
 				}	
@@ -141,7 +141,7 @@ public abstract class User_R implements User{
 			do {
 				System.out.print("Ingrese un usuario: ");aux=in.next();
 				if(aux.equals("")||aux.contains(" ")||existId(aux)||aux.length()<5){
-					System.out.println("!!ERROR: Login invalidoÂ¡Â¡");
+					System.out.println("!!ERROR: Login invalido¡¡");
 					aux=null;
 				}
 			}while(aux==null);
@@ -150,9 +150,9 @@ public abstract class User_R implements User{
 			//Ingrese Pass
 			aux=null;
 			do {
-				System.out.print("Ingrese una contraseÃ±a: ");aux=in.next();
+				System.out.print("Ingrese una contraseña: ");aux=in.next();
 				if(aux.equals("")||aux.contains(" ")||aux.length()<6){
-					System.out.println("!!ERROR: Login invalidoÂ¡Â¡");
+					System.out.println("!!ERROR: Login invalido¡¡");
 					aux=null;
 				}
 				
@@ -167,7 +167,7 @@ public abstract class User_R implements User{
 				aux=in.next();
 				
 				if(aux.equals("")||aux.contains(" ")||!isNumeric(aux)) {
-					System.out.println("!!ERROR: Documento InvalidoÂ¡Â¡");
+					System.out.println("!!ERROR: Documento Invalido¡¡");
 					aux=null;
 				}
 			}while(aux==null);
@@ -179,10 +179,10 @@ public abstract class User_R implements User{
 				System.out.print("Ingrese su Edad: ");aux2=in.nextInt();
 					
 				if(aux2<18) {
-					System.out.println("!!ERROR: No eres mayor de edadÂ¡Â¡");
+					System.out.println("!!ERROR: No eres mayor de edad¡¡");
 					aux2=null;
 				}else if(aux2>199) {
-					System.out.println("!!ERROR: Edad InvalidaÂ¡Â¡");
+					System.out.println("!!ERROR: Edad Invalida¡¡");
 					aux2=null;
 				}
 					
@@ -194,7 +194,7 @@ public abstract class User_R implements User{
 			do {
 				System.out.print("Ingrese su sexo: ");aux=in.next();
 				if((!aux.equals("M")&&!aux.equals("F"))||aux.equals("")||aux.contains(" ")) {
-					System.out.println("!!ERROR: Sexo InvalidoÂ¡Â¡");
+					System.out.println("!!ERROR: Sexo Invalido¡¡");
 					aux=null;
 				}
 			}while(aux==null);
@@ -227,7 +227,7 @@ public abstract class User_R implements User{
 		return x;
 	}
 	
-	//MÃ©todo para comprobar que el usuario ya existe.
+	//Método para comprobar que el usuario ya existe.
 	
 	private boolean existId(String Id) {
 		for(int i=0; i < (DatosTeatro.U).size()-1;i++) {
@@ -256,7 +256,7 @@ public abstract class User_R implements User{
 			if(aux.equals("")||aux.contains(" ")) {
 				a.setAlertType(AlertType.WARNING);
 				a.setTitle("AVISO");
-				a.setHeaderText("Â¡Nombre Invalido!");
+				a.setHeaderText("¡Nombre Invalido!");
 				a.setContentText("El campo 'Nombre' no debe estar vacio.\n"
 						+ "Ingrese el dato nuevamente");					
 				a.showAndWait();
@@ -266,7 +266,7 @@ public abstract class User_R implements User{
 					aux.contains("9")) {
 				a.setAlertType(AlertType.WARNING);
 				a.setTitle("AVISO");
-				a.setHeaderText("Â¡Nombre Invalido!");
+				a.setHeaderText("¡Nombre Invalido!");
 				a.setContentText("El campo 'Nombre' no debe llevar numeros.\n"
 						+ "Ingrese el dato nuevamente");
 				a.showAndWait();
@@ -306,7 +306,7 @@ public abstract class User_R implements User{
 			if(aux.equals("")||aux.contains(" ")) {
 				a.setAlertType(AlertType.WARNING);
 				a.setTitle("AVISO");
-				a.setHeaderText("Â¡Nombre Invalido!");
+				a.setHeaderText("¡Nombre Invalido!");
 				a.setContentText("El campo 'Apellido' no debe estar vacio.\n"
 						+ "Ingrese el dato nuevamente");					
 				a.showAndWait();
@@ -316,7 +316,7 @@ public abstract class User_R implements User{
 					aux.contains("9")) {
 				a.setAlertType(AlertType.WARNING);
 				a.setTitle("AVISO");
-				a.setHeaderText("Â¡Nombre Invalido!");
+				a.setHeaderText("¡Nombre Invalido!");
 				a.setContentText("El campo 'Apellido' no debe llevar numeros.\n"
 						+ "Ingrese el dato nuevamente");
 				a.showAndWait();
@@ -357,7 +357,7 @@ public abstract class User_R implements User{
 			if(aux.equals("")||aux.contains(" ")||existId(aux)||aux.length()<5){
 				a.setAlertType(AlertType.WARNING);
 				a.setTitle("AVISO");
-				a.setHeaderText("Â¡Â¡Login invalido!!");
+				a.setHeaderText("¡¡Login invalido!!");
 				a.setContentText("El campo 'Usuario' no debe estar vacio,\n"
 						+ "no debe tener menos de 5 caracteres\n"
 						+ "y el usuario debe ser nuevo (No se aceptan nombre de usuarios ya existentes).\n"
@@ -366,14 +366,14 @@ public abstract class User_R implements User{
 			}else {
 				DatosTeatro.Datos.add(aux);
 				
-				//Ingrese contraseÃ±a:
+				//Ingrese contraseña:
 				Ini.getP3().getChildren().clear();
 				Label T = new Label("...REGISTRARSE...");
 				T.setFont(Font.font("Times New Roman",FontWeight.BOLD,20));
 				T.setTextFill(Color.CRIMSON);
 				Ini.getP3().add(T,0,2,5,1);
 				
-				Label L = new Label("Ingrese la contraseÃ±a: ");
+				Label L = new Label("Ingrese la contraseña: ");
 				TextField MA = new TextField();
 				CC M9 = new CC();
 				
@@ -398,8 +398,8 @@ public abstract class User_R implements User{
 			if(aux.equals("")||aux.contains(" ")||aux.length()<6){
 				a.setAlertType(AlertType.WARNING);
 				a.setTitle("AVISO");
-				a.setHeaderText("Â¡Â¡ContraseÃ±a invalida!!");
-				a.setContentText("El campo 'ContraseÃ±a' no debe estar vacio y \n"
+				a.setHeaderText("¡¡Contraseña invalida!!");
+				a.setContentText("El campo 'Contraseña' no debe estar vacio y \n"
 						+ "no debe tener menos de 6 caracteres\n"
 						+ "Ingrese el dato nuevamente.");					
 				a.showAndWait();
@@ -440,7 +440,7 @@ public abstract class User_R implements User{
 			if(aux.equals("")||aux.contains(" ")||!isNumeric(aux)){
 				a.setAlertType(AlertType.WARNING);
 				a.setTitle("AVISO");
-				a.setHeaderText("Â¡Â¡Documento Invalido!!");
+				a.setHeaderText("¡¡Documento Invalido!!");
 				a.setContentText("El campo 'Documento' no debe contener letras\n"
 						+ "y no debe tener mas de 11 digitos");					
 				a.showAndWait();
@@ -480,13 +480,13 @@ public abstract class User_R implements User{
 			
 			a.setAlertType(AlertType.WARNING);
 			a.setTitle("AVISO");
-			a.setHeaderText("Â¡Â¡Edad Invalida!!");
+			a.setHeaderText("¡¡Edad Invalida!!");
 			
 			if(aux2<18) {
 				a.setContentText("Debes ser mayor de edad. (>18)");
 				a.showAndWait();
 			}else if(aux2>199) {
-				a.setContentText("Numero excedido de los lÃ­mites. (<199)");
+				a.setContentText("Numero excedido de los límites. (<199)");
 				a.showAndWait();
 			}else {
 				DatosTeatro.Datos.add(aux2);
@@ -548,7 +548,7 @@ public abstract class User_R implements User{
 			if(((Button)b).getText().equals("ValidarDatos")) {
 				(new NewUser()).ejecutar();
 				a.setTitle("AVISO");
-				a.setHeaderText("Â¡Su cuenta se ha creado EXITOSAMENTE!");
+				a.setHeaderText("¡Su cuenta se ha creado EXITOSAMENTE!");
 				a.showAndWait();
 				(new Login()).ejecutar();
 			}else {
@@ -608,5 +608,6 @@ public abstract class User_R implements User{
 	}
 	public void setSexo(String sexo) {
 		this.sexo=sexo;
-	}	
+	}
+	
 }

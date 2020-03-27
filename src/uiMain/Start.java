@@ -89,7 +89,7 @@ public class Start {
 				aux.add(new Funcion(Pelicula.Cartelera.get(0),(DatosTeatro.S).get(2),new GregorianCalendar(2020, 04, 21, 13, 30)));
 				
 				ArrayList<Funcion> aux1 = new ArrayList();
-				aux1.add(new Funcion(Pelicula.Cartelera.get(1),(DatosTeatro.S).get(0),new GregorianCalendar(2020, 03, 28, 13, 30)));
+				aux1.add(new Funcion(Pelicula.Cartelera.get(1),(DatosTeatro.S).get(0),new GregorianCalendar(2020, 02, 24, 9, 30)));
 				aux1.add(new Funcion(Pelicula.Cartelera.get(1),(DatosTeatro.S).get(4),new GregorianCalendar(2020, 04, 20, 20, 30)));
 				aux1.add(new Funcion(Pelicula.Cartelera.get(1),(DatosTeatro.S).get(3),new GregorianCalendar(2020, 04, 1, 23, 30)));
 			
@@ -147,12 +147,12 @@ public class Start {
 			//	((DatosTeatro.Ini.getOp().get(op))).ejecutar();	
 			//}
 			//if(op!=0 && op!=1 && op!=2 && op!=3) {
-			//	System.out.println("ERROR: Esta opciÃ³n no estÃ¡ disponible");
+			//	System.out.println("ERROR: Esta opción no está disponible");
 			//}
 		//}while(off);
 		
 	}
 	public static void Off() {
-		System.out.println("!!AVISO: se ha salido de la aplicaciÃ³nÂ¡Â¡");
+		System.out.println("!!AVISO: se ha salido de la aplicación¡¡");
 	}
 }

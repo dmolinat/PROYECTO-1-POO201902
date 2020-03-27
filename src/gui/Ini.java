@@ -46,9 +46,20 @@ public class Ini extends Application {
 		return P3;
 	}
 	
+	private static Stage vent;
+	public static Stage getVent() {
+		return vent;
+	}
+	
+	private static Scene s1;
+	public static Scene getScene1() {
+		return s1;
+	}
+	
 	
 	@Override
 	public void start(Stage stg) throws Exception {
+		vent = stg;
 		Start.On();
 		stg.setTitle("Inicio");
 		
@@ -56,8 +67,17 @@ public class Ini extends Application {
 		
 		//Creacion de Panes:
 		GridPane P1 = new GridPane();
+		P1.setAlignment(Pos.CENTER);
+		P1.setPrefSize(Double.MAX_VALUE,Double.MAX_VALUE);
+		P1.setBorder(new Border(new BorderStroke(Color.DARKBLUE,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+		P1.setPadding(new Insets(20,20,20,20));
+		
+		
 		GridPane P2 = new GridPane();
-		P2.setPrefSize(800, 800);
+		P2.setBorder(new Border(new BorderStroke(Color.DARKRED,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+		P2.setAlignment(Pos.CENTER);
+		P2.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		P2.setPadding(new Insets(20,20,20,20));
 		
 		P1.setPadding(new Insets(15,15,15,15));
 		P2.setPadding(new Insets(15,15,15,15));
@@ -69,11 +89,13 @@ public class Ini extends Application {
 		P3.setPadding(new Insets(15,15,15,15));
 		P3.setVgap(10);
 		P1.setPrefSize(500, 500);
+		P3.setAlignment(Pos.CENTER);
 		P1.add(P3, 0, 1,4,1);
 		
 		
 		//Imagenes (ImageView)
 		GridPane P4 = new GridPane();
+		P4.setAlignment(Pos.CENTER);
 		Image image1 = new Image(getClass().getResourceAsStream("/Imagenes/ImT1.png"));
 		ImageView ImT1= new ImageView(image1);
 		ImT1.setFitHeight(200);
@@ -92,32 +114,46 @@ public class Ini extends Application {
 		
 		//Saludo
 		GridPane P5 = new GridPane();
-		Label L2 = new Label("!Bienvenidos a la APP Teatros SAÂ¡"); //Cambiar tipo de letra,fuente,color,etc
+		P5.setAlignment(Pos.CENTER);
+		Label L2 = new Label("¡BIENVENIDOS A LA APP TEATROS SA!"); //Cambiar tipo de letra,fuente,color,etc
 		L2.setFont(new Font("Times New Roman",20));
 		L2.setTextFill(Color.BLUE);
+		L2.setTextAlignment(TextAlignment.CENTER);
+		L2.setAlignment(Pos.CENTER);
+		
 		P5.add(L2, 0,0,4,1);
+		
+		LD.setTextAlignment(TextAlignment.CENTER);
+		LD.setAlignment(Pos.CENTER);
+		P5.setHgap(15);
+		P5.setVgap(15);
 		P5.add(LD, 0, 1,4,1);
 		
 		
-		P5.setPrefHeight(160);
+		P5.setPrefHeight(200);
 		P5.setPrefWidth(500);
+		P5.setBorder(new Border(new BorderStroke(Color.DARKGRAY,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
 		P2.add(P5, 0, 0,4,1);
+		P5.setAlignment(Pos.CENTER);
 				
 		//Hoja de Vida:
 		GridPane P6 = new GridPane();
+		P6.setAlignment(Pos.CENTER);
 		Label L31= new Label("\n"
 				+ "CREADORES:");
 		L31.setTextAlignment(TextAlignment.CENTER);
+		L31.setAlignment(Pos.CENTER);
+		
 		L31.setTextFill(Color.DARKRED);
 		L31.setFont(new Font("Times New Roman",22));
 		P6.add(L31, 3, 0);
 		Label L3 = new Label("DENILSON ANDRES MOLINA TRUYOT\n"
 				+ "\n"
 				+ "SOBRE MI: Soy un estudiante con dos anos cursando la carrera\n"
-				+ "de Ing.Sistemas en la Universidad Nacional de Comlombia. Se desempeÃ±arme\n"
-				+  "en los conceptos de estructura de datos y los estÃ¡ndares de eficiencia\n"
+				+ "de Ing.Sistemas en la Universidad Nacional de Comlombia. Se desempeñarme\n"
+				+  "en los conceptos de estructura de datos y los estándares de eficiencia\n"
 				+ "a nivel mundia. Doy lo mejor de mi en los proyectos y he tenido contactos\n"
-				+ "con el desarrollo de software y ediciÃ³n de videos bajo ciertas plataformas.\n"
+				+ "con el desarrollo de software y edición de videos bajo ciertas plataformas.\n"
 				+ "\n"
 				+ "FORMACION:\n"
 				+ "Bachiller: Colegio Ateneo Moderno de Santa Marta. Dic.2017\n"
@@ -135,7 +171,10 @@ public class Ini extends Application {
 		L3.setBorder(new Border(new BorderStroke(Color.DARKBLUE,BorderStrokeStyle.SOLID,CornerRadii.EMPTY,BorderWidths.DEFAULT)));
 		L3.setTextAlignment(TextAlignment.CENTER);
 		P6.add(L3, 0,1,4,1);
+		P6.setHgap(10);
+		P6.setVgap(10);
 		P2.add(P6, 0,1,4,1);
+		
 		//Oidor de las hojas de vida
 		HojClick M2 = new HojClick();
 		L3.setOnMouseClicked(M2);
@@ -150,6 +189,7 @@ public class Ini extends Application {
 		Men.getItems().add(S);
 		Men.getItems().add(D);
 		MenB.getMenus().add(Men);
+		
 		//Oidores de opcion de Menu
 		OpIni Op1 = new OpIni();
 		S.setOnAction(Op1);
@@ -177,11 +217,14 @@ public class Ini extends Application {
 		ContMen.setPrefWidth(100);
 		P1.add(ContMen, 0,0,4,1);
 		
+		HBox Cont = new HBox(P1,P2);
+		Cont.setSpacing(20);
+		Cont.setAlignment(Pos.CENTER);
 		
-		Scene Vent1 = new Scene(new HBox(P1,P2),950,700);
-		stg.setScene(Vent1);
+		s1 = new Scene(Cont,1200,700);
+		vent.setScene(s1);
 		
-		stg.show();
+		vent.show();
 		
 		
 	}
@@ -224,10 +267,10 @@ public class Ini extends Application {
 				((Label)L).setText("DENILSON ANDRES MOLINA TRUYOT\n"
 						+ "\n"
 						+ "SOBRE MI: Soy un estudiante con dos anos cursando la carrera\n"
-						+ "de Ing.Sistemas en la Universidad Nacional de Comlombia. Se desempeÃ±arme\n"
-						+  "en los conceptos de estructura de datos y los estÃ¡ndares de eficiencia\n"
+						+ "de Ing.Sistemas en la Universidad Nacional de Comlombia. Se desempeñarme\n"
+						+  "en los conceptos de estructura de datos y los estándares de eficiencia\n"
 						+ "a nivel mundia. Doy lo mejor de mi en los proyectos y he tenido contactos\n"
-						+ "con el desarrollo de software y ediciÃ³n de videos bajo ciertas plataformas.\n"
+						+ "con el desarrollo de software y edición de videos bajo ciertas plataformas.\n"
 						+ "\n"
 						+ "FORMACION:\n"
 						+ "Bachiller: Colegio Ateneo Moderno de Santa Marta. Dic.2017\n"
@@ -246,19 +289,19 @@ public class Ini extends Application {
 						+ "\n"
 						+ "SOBRE MI: Soy estudiante de cuarto semestre de Ingenieria de Sistemas\n"
 						+ "en la Universidad Nacional de Colombia, sede Medellin. He participado\n"
-						+ "en el desarrollo de proyectos de software durante mas de un aÃ±o, y me\n"
+						+ "en el desarrollo de proyectos de software durante mas de un año, y me\n"
 						+ "especializo en el area de la programacion orientada a objetos.\n"
 						+ "Me gusta trabajar en equipo, y aprender cosas nuevas sobre el mundo\n"
 						+ "de la programacion cada dia.\n"
 						+ "\n"
-						+ "FORMACIÃ“N:\n"
+						+ "FORMACIÓN:\n"
 						+ "-Bachiller\n"
 						+ "   Institucion Educativa Yarumito. Dic.2017\n"
 						+ "-Estudiante de Pregrado en Ingenieria de Sistemas e Informatica\n"
 						+ "   Universidad Nacional De Colombia, Sede Medellin. Vigente\n"
 						+ "\n"
 						+ "IDIOMAS:\n"
-						+ "EspaÃ±ol: Nativo\n"
+						+ "Español: Nativo\n"
 						+ "Ingles: B1-B2 (Medio-Alto)\n"
 						+ "\n"
 						+ "CONTACTO:\n"
@@ -272,14 +315,14 @@ public class Ini extends Application {
 						+ "SOBRE MI: Soy estudiante de cuarto semestre de Ingenieria de Sistemas\n"
 						+ "en la Universidad Nacional de Colombia, sede Medellin."
 						+ "\n"
-						+ "FORMACIÃ“N:\n"
+						+ "FORMACIÓN:\n"
 						+ "-Bachiller\n"
 						+ "   Gimnasio Los Alacazares. Dic.2017\n"
 						+ "-Estudiante de Pregrado en Ingenieria de Sistemas e Informatica\n"
 						+ "   Universidad Nacional De Colombia, Sede Medellin. Vigente\n"
 						+ "\n"
 						+ "IDIOMAS:\n"
-						+ "EspaÃ±ol: Nativo\n"
+						+ "Español: Nativo\n"
 						+ "Ingles: B1-B2 (Medio-Alto)\n"
 						+ "\n"
 						+ "CONTACTO:\n"
@@ -289,27 +332,27 @@ public class Ini extends Application {
 				//Keith
 				((Label)L).setText("KEITH DAVID KELSY DIAZ"
 						+ "\n"
-						+ "SOBRE MI: Soy estudiante de segundo aÃ±o de Ingenieria de Sistemas\n"
-						+ " e informÃ¡tica en la Universidad Nacional de Colombia, sede Medellin.\n"
-						+ "soy alguien apasionado por la musica, la tecnologÃ­a y la informatica, he \n"
+						+ "SOBRE MI: Soy estudiante de segundo año de Ingenieria de Sistemas\n"
+						+ " e informática en la Universidad Nacional de Colombia, sede Medellin.\n"
+						+ "soy alguien apasionado por la musica, la tecnología y la informatica, he \n"
 						+ "participado en algunos proyectos de desarrollo informatico en mi vida academica\n"
-						+ "me gusta aprender cada dÃ­a cosas nuevas por lo que siempre busco alternativas \n"
+						+ "me gusta aprender cada día cosas nuevas por lo que siempre busco alternativas \n"
 						+ "de estudio con las que pueda enriquecer mis conocimientos."
 						+ "\n"
 						+ "FORMACION:\n"
 						+ "-Bachiller\n"
 						+ "   Escuela Normal Superior Lacides Iriarte Dic.2017\n"
-						+ "-Estudiante de Pregrado en Ingenieria de Sistemas e InformÃ¡tica\n"
+						+ "-Estudiante de Pregrado en Ingenieria de Sistemas e Informática\n"
 						+ "   Universidad Nacional De Colombia, Sede Medellin. Vigente\n"
 						+ "\n"
 						+ "IDIOMAS:\n"
-						+ "EspaÃƒÂ±ol: Nativo\n"
+						+ "EspaÃ±ol: Nativo\n"
 						+ "Ingles: B1-B2 (Medio-Alto)\n"
 						+ "\n"
 						+ "CONTACTO:\n"
 						+ "Telefono: 3126127024\n"
 						+ "Correo: kkelsy@unal.edu.co\n"
-						+ "SahagÃºn, CÃ³rdoba\n");
+						+ "Sahagún, Córdoba\n");
 			}
 		}
 		

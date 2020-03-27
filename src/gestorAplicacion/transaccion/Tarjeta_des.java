@@ -24,7 +24,7 @@ public class Tarjeta_des{
 		Calendar fechaVen = new GregorianCalendar();
 		fechaVen.add(Calendar.YEAR, 2);
 		this.fechaDeVencimiento = fechaVen;
-		this.nombreContribuyente = (Cliente)DatosTeatro.userLive;//cliente que est√° loggeado
+		this.nombreContribuyente = (Cliente)DatosTeatro.userLive;//cliente que est· loggeado
 	}
 	
 	public Integer getCodigo() {
